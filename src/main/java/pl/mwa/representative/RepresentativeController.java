@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import pl.mwa.util.CSVUtils;
 
 @Controller
 @RequestMapping("/representative")
@@ -91,21 +88,29 @@ public class RepresentativeController {
 	
 	
 	@GetMapping("/import")
-	public String readFromCSV(Model model) {
-		model.addAttribute("filename", "plik.csv");
-		return "utils/filename";
+	public String getImportFileName(Model model) {
+		model.addAttribute("filename", "file.csv");
+		return "utils/importfilename";
 	}
 	
-	
-	
-	@ResponseBody
+
 	@PostMapping("/import")
-	public String readFromCSV(@RequestParam(name = "filename", required = false) String filename) {
-		String url = "/home/mikolaj/Documents/feed1.csv";
-		System.out.println(filename);
-		CSVUtils.reader(url);
-		
-		return "plik wczytany";
+	public String getImportFileName(@RequestParam(name = "filename", required = false) String filename) {
+		new RepresentativeServiceImpl(rr).importDataFromCSV(filename);
+		return REDIRECT_LISTALL_FULLPATH;
 	}
+	
+	@GetMapping("/export")
+	public String getExportFileName(Model model) {
+		model.addAttribute("filename", "file.csv");
+		return "utils/exportfilename";
+	}
+	
+	@PostMapping("/export")
+	public String getExportFileName(@RequestParam(name = "filename", required = false) String filename) {
+		new RepresentativeServiceImpl(rr).exportDataToCSV(filename);
+		return REDIRECT_LISTALL_FULLPATH;
+	}
+	
 	
 }

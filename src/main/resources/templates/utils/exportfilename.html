@@ -4,16 +4,16 @@
 	
 <section layout:fragment="content">
 
-	<h1>IMPORT DATA</h1>
-	<form th:action="@{/representative/import}" method="post">
+	<h1>EXPORT DATA</h1>
+	<form th:action="@{/representative/export}" method="post">
 		<div class="form-group">
 			<label> Filename: <input type="text" name="filename"  th:value="*{filename}" />
 			</label>
 			
-			<small> file must be localized in the default 'Documents' folder</small>
+			<small> file will be located in the default 'Documents' folder</small>
 		</div>
 		<div>
-			<input type="submit" value="import data from file" />
+			<input type="submit" value="export data to file" />
 		</div>
 	</form>
 	</section>
