@@ -1,14 +1,12 @@
-package pl.mwa.team;
+package pl.mwa.client;
 
 import java.util.Collection;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -17,31 +15,27 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.mwa.user.User;
+import pl.mwa.representative.Representative;
 
-
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Data
 @Entity
-@Table(name="teams")
-public class Team {
+@Table(name="clients")
+public class Client {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
+	
 	@NotBlank
-	@Column(nullable = false, unique = true)
 	private String name;
 	
-	@OneToOne
-	private User leader;
-	
+	private boolean active;
 	
 	@OneToMany
-	private Collection<User> members; 
-	
+	private Collection<Representative> representatives;
 	
 	
 }
