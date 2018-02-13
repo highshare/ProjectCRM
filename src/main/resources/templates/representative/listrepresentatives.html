@@ -58,8 +58,7 @@
 						</a>
 						
 							<button data-toggle="modal" class="open-homeEvents btn btn-danger btn-xs" 
-							 data-id="${group.id}"
-								data-target="#myModal">
+								 th:attr="data-id=${group.id}"  data-target="#myModal">
 								<i class="fa fa-trash-o"></i> Remove
 							</button> 
 							
@@ -77,7 +76,7 @@
 										<div class="modal-body" >
 
 											<label>Repr. ID</label> <input type="hidden"
-												name="eventId" id="eventId" /> <span id="idHolder"></span>
+												name="eventId" id="eventId" /> <span id="idHolder" th:text="${group.id}"></span>
 										</div>
 										<div class="modal-footer">
 										<form th:action="@{/representative/remove/{id}(id=${group.id})}" method="post">
@@ -91,11 +90,12 @@
 								</div>
 							</div>
 							<script>
-							$(document).on("click", ".open-homeEvents", function () {
-							     var eventId = $(this).data('id');
-							     $('#idHolder').html( eventId );
-							});
-							
+
+								$(document).on("click", ".open-homeEvents",
+										function() {
+											var eventId = $(this).data('id');
+											$('#idHolder').html(eventId);
+										});
 							</script>
 							</td>
 					</tr>

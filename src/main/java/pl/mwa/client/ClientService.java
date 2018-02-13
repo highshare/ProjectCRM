@@ -11,6 +11,8 @@ public interface ClientService {
 	public void remove(long id);
 	
 	public void save(Client client);
+	
+	public Client findOne(Long id);
 
 	
 }

@@ -22,6 +22,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import pl.mwa.client.Client;
+import pl.mwa.util.CSVUtils;
 
 @Service
 public class RepresentativeServiceImpl implements RepresentativeService {
@@ -91,13 +92,14 @@ public class RepresentativeServiceImpl implements RepresentativeService {
 	
 	
 	public void importDataFromCSV(String filename) {
-		List<Representative> representatives = buildListFromCSV(filename);
+		List<Representative> representatives = CSVUtils.buildListFromCSV(filename, Representative.class);
 		saveToDB(representatives);
 	}
 	
+	
 	public void exportDataToCSV(String filename) {
 		List<Representative> representatives = buildListFromDB();
-		exportListToCSV(filename, representatives);
+		CSVUtils.exportListToCSV(filename, representatives);
 	}
 	
 	public List<Representative> buildListFromDB() {

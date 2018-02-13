@@ -1,5 +1,6 @@
 package pl.mwa.representative;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,10 +41,10 @@ public class Representative {
 	private String phone;
 	
 	@Email
+	@Column(nullable = false, unique = true)
 	private String email;
 	
 	private boolean active;
-	
 	
 	@ManyToOne
 	private Client client;

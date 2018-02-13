@@ -1,5 +1,7 @@
 package pl.mwa.client;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,16 @@ public class ClientServiceImpl implements ClientService {
 	public void save(Client client) {
 		cr.save(client);
 
+	}
+
+
+	public Client findOne(Long id) {
+		return cr.findOne(id);
+	}
+
+
+	public List<Client> findAll() {
+		return cr.findAll();
 	}
 
 	
