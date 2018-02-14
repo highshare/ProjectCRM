@@ -1,27 +1,20 @@
 package pl.mwa.position;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.Min;
+import java.math.BigDecimal;
 
-import org.hibernate.validator.constraints.NotBlank;
+public enum Position {
 
-@Entity
-@Table(name="positions")
-public class Position {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	@NotBlank
-	private String title;
+	REGULAR("REGULAR", new BigDecimal("10000.00")), 
+	MANAGER("MANAGER", new BigDecimal("100000.00")), 
+	OWNER("OWNER", new BigDecimal("9999999999.99"));
 
+	private String name;
+
+	private BigDecimal limit;
 	
-	@Min(value=0)
-	private int vla; // value limit authorization
-	
-	
+	Position(String name, BigDecimal limit) {
+		this.name = name;
+		this.limit = limit;
+	}
+
 }

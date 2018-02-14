@@ -8,9 +8,11 @@ import java.util.stream.StreamSupport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import pl.mwa.exception.ModelNotFound;
+import pl.mwa.role.RoleRepository;
 import pl.mwa.util.EntityUtils;
 
 @Service
@@ -21,16 +23,22 @@ public class UserService {
 
 	
 	
-	UserRepository repository;
-	
-	
-	public UserService(UserRepository repository) {
+	private final UserRepository repository;
+	private final RoleRepository roleRepository;
+	private final BCryptPasswordEncoder passwordEncoder;
+
+	public UserService(UserRepository repository, RoleRepository roleRepository,
+			BCryptPasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
 		this.repository = repository;
+		this.roleRepository = roleRepository;
 	}
+	
 	
 	
 	Long CreateUser(CreateUserDto createUserDto) {
 		createUserDto.setActive(true);
+		createUserDto.setPassword(passwordEncoder.encode(createUserDto.getPassword()));
 		createUserDto.setCreated(Timestamp.from(Instant.now()));
 		User user = repository.save(UserMapper.toEntity(createUserDto));
 		return user.getId(); 
@@ -61,7 +69,7 @@ public class UserService {
         User user = repository.findById(userDto.getId())
                 .orElseThrow(() -> new ModelNotFound("User", userDto.getId()));
         EntityUtils.setter(userDto.getUsername(), t -> user.setUsername(t));
-        EntityUtils.setter(userDto.getPassword(), t -> user.setPassword(t));
+        EntityUtils.setter(userDto.getPassword(), t -> user.setPassword(passwordEncoder.encode(t)));
         EntityUtils.setter(userDto.getFirstname(), t -> user.setFirstname(t));
         EntityUtils.setter(userDto.getLastname(), t -> user.setLastname(t));
         EntityUtils.setter(userDto.getEmail(), t -> user.setEmail(t));
@@ -79,6 +87,12 @@ public class UserService {
         user.setActive(false);
         repository.save(user);
     }
+
+
+
+	public User findByUserName(String username) {
+		return repository.findByUsername(username);
+	}
 	
     
     
