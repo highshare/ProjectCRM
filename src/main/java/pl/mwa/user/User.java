@@ -44,7 +44,7 @@ public class User {
 	private String username;
 	
 	@NotBlank
-	@Column
+	@Column(nullable = false)
 	private String password;
 	
 	@NotBlank

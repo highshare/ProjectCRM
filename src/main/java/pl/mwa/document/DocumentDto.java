@@ -6,12 +6,11 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.mwa.client.Client;
 import pl.mwa.user.User;
 
 
@@ -25,11 +24,9 @@ public class DocumentDto {
 
 	@NotNull
 	private long id;
-	
-	@NotBlank
+
 	private String title;
-	
-	@NotNull
+
 	private Timestamp created;
 	
 	@Enumerated(EnumType.STRING)
@@ -38,15 +35,21 @@ public class DocumentDto {
 	@Enumerated(EnumType.STRING)
 	private DocumentStatus documentStatus;
 	
+	private Client client;
+	
 	private String description;
 	
-	private double value;
+	private Double value;
 	
 	private User author;
 	
 	private User acceptedBy;
 	
-	private Timestamp accepted;
+	private Boolean acceptedItern;
+	
+	private Boolean acceptedByClient;
+
+
 	
 	
 	

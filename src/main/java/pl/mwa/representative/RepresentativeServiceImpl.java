@@ -74,18 +74,6 @@ public class RepresentativeServiceImpl implements RepresentativeService {
 	}
 
 	
-	public List<Representative> buildListFromCSV(String filename) {
-		Path fullPath = Paths.get(System.getProperty("user.home"),"Documents", filename);
-		try {
-			List<Representative> representatives = new CsvToBeanBuilder(new FileReader(fullPath.toString()))
-					.withThrowExceptions(true).withType(Representative.class).build().parse();
-			return representatives;
-		} catch (IllegalStateException | FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		return Collections.emptyList();
-	}
-	
 	public void saveToDB(List<Representative> representatives) {
 		rr.save(representatives);
 	}
@@ -105,29 +93,12 @@ public class RepresentativeServiceImpl implements RepresentativeService {
 	public List<Representative> buildListFromDB() {
 		return rr.findAll();
 	}
-	
-	public void exportListToCSV(String filename, List<Representative> representatives) {
-		Path fullPath = Paths.get(System.getProperty("user.home"),"Documents", filename);
-		try {
-			Writer writer = new FileWriter(fullPath.toString());
-	        StatefulBeanToCsvBuilder<Representative> beanToCsv = new StatefulBeanToCsvBuilder<Representative>(writer);
-	        try {
-				beanToCsv.build().write(representatives);
-				writer.close();
-			} catch (CsvDataTypeMismatchException e) {
-				e.printStackTrace();
-			} catch (CsvRequiredFieldEmptyException e) {
-				e.printStackTrace();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+
+	@Override
+	public Collection<Representative> findAll() {
+		return rr.findAll();
 	}
-
-
-
-	
-	
 	
 	
 }

@@ -23,7 +23,8 @@ public class CreateDocumentDto {
 	@NotBlank
 	private String title;
 	
-
+	private String description;
+	
 	private Timestamp created;
 	
 	@Enumerated(EnumType.STRING)

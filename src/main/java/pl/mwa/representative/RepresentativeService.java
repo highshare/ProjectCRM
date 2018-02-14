@@ -16,6 +16,8 @@ public interface RepresentativeService {
 	public void save(Representative representative);
 	
 	public Collection<Representative> findAllByActiveTrue();
+	
+	public Collection<Representative> findAll();
 
 	public Page<Representative> findAll(Pageable pageable);
 

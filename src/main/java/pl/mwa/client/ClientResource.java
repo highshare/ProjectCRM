@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.mwa.representative.Representative;
+import pl.mwa.representative.RepresentativeServiceImpl;
+import pl.mwa.util.CSVUtils;
 
 
 @RequestMapping("/clients")
@@ -22,6 +25,10 @@ public class ClientResource {
 	
 	@Autowired
 	ClientServiceImpl cs;
+	
+	@Autowired
+	ClientRepository cr;
+	
 
 	public ClientResource(ClientServiceImpl cs) {
 		this.cs = cs;
@@ -59,5 +66,23 @@ public class ClientResource {
     	cs.save(client);
         return ResponseEntity.accepted().build();
     }
+    
+	@GetMapping("/import")
+	ResponseEntity getImportListFromCSV(@RequestParam(name = "filename", required = true) String filename) {
+		return ResponseEntity.ok(CSVUtils.buildListFromCSV(filename, Client.class));
+	}
+	
+	@PostMapping("/import")
+	ResponseEntity addEntitiesFromCSV(@RequestParam(name = "filename", required = true) String filename) {
+		new ClientServiceImpl(cr).importDataFromCSV(filename);
+		return ResponseEntity.accepted().build();
+	}
+	
+	@PostMapping("/export")
+	ResponseEntity exportDBtoFile(@RequestParam(name = "filename", required = true) String filename) {
+		new ClientServiceImpl(cr).exportDataToCSV(filename);
+		return ResponseEntity.accepted().build();
+	}
+    
     
 }

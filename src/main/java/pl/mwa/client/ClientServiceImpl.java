@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pl.mwa.representative.Representative;
+import pl.mwa.util.CSVUtils;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -51,6 +52,26 @@ public class ClientServiceImpl implements ClientService {
 
 
 	public List<Client> findAll() {
+		return cr.findAll();
+	}
+
+	public void saveToDB(List<Client> clients) {
+		cr.save(clients);
+	}
+	
+	
+	public void importDataFromCSV(String filename) {
+		List<Client> clients = CSVUtils.buildListFromCSV(filename, Client.class);
+		saveToDB(clients);
+	}
+	
+	
+	public void exportDataToCSV(String filename) {
+		List<Client> clients = buildListFromDB();
+		CSVUtils.exportListToCSV(filename, clients);
+	}
+	
+	public List<Client> buildListFromDB() {
 		return cr.findAll();
 	}
 

@@ -1,4 +1,4 @@
-package pl.mwa.exeption;
+package pl.mwa.exception;
 
 public class ModelNotFound extends RuntimeException{
     private static final String MESSAGE_PATTERN = "Entity %s with id %s was not found";

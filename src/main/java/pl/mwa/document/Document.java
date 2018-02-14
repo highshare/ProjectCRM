@@ -61,7 +61,8 @@ public class Document {
 	
 	private String filename;
 	
-	private double value;
+	@Column(precision=10, scale=2)
+	private Double value;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -70,10 +71,9 @@ public class Document {
 	@ManyToOne
 	private User acceptedBy;
 	
+	private Boolean acceptedItern;
 	
-	private Timestamp accepted;
-	
-	
+	private Boolean acceptedByClient;
 	
 	
 }

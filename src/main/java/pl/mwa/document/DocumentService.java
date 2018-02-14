@@ -3,13 +3,19 @@ package pl.mwa.document;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pl.mwa.exeption.ModelNotFound;
+import pl.mwa.client.Client;
+import pl.mwa.exception.ModelNotFound;
+import pl.mwa.user.User;
+import pl.mwa.util.CSVUtils;
 
 @Service
 public class DocumentService {
@@ -64,17 +70,27 @@ public class DocumentService {
                 .orElseThrow(() -> new ModelNotFound("Document", id));
         repository.delete(document);
     }
+    
+    private static <T> void setter(T value, Consumer<T> setter){
+        Objects.requireNonNull(setter);
+        if(value != null){
+            setter.accept(value);
+        }
+    }
 
     void update(DocumentDto documentDto){
         Document document = repository.findById(documentDto.getId())
                 .orElseThrow(() -> new ModelNotFound("Document", documentDto.getId()));
-        document.setTitle(documentDto.getTitle());
-        document.setDocumentType(documentDto.getDocumentType());
-        document.setDocumentStatus(documentDto.getDocumentStatus());
-        document.setDescription(documentDto.getDescription());
-        document.setValue(documentDto.getValue());
-        document.setAuthor(documentDto.getAuthor());
-        document.setAcceptedBy(documentDto.getAcceptedBy());
+        setter(documentDto.getTitle(), t -> document.setTitle(t));
+        setter(documentDto.getDocumentType(), t -> document.setDocumentType(t));
+        setter(documentDto.getDocumentStatus(), t -> document.setDocumentStatus(t));
+        setter(documentDto.getDescription(), t -> document.setDescription(t));
+        setter(documentDto.getClient(), t -> document.setClient(t));
+        setter(documentDto.getValue(), t -> document.setValue(t));
+        setter(documentDto.getAuthor(), t -> document.setAuthor(t));
+        setter(documentDto.getAcceptedBy(), t -> document.setAcceptedBy(t));
+        setter(documentDto.getAcceptedItern(), t -> document.setAcceptedItern(t));
+        setter(documentDto.getAcceptedByClient(), t -> document.setAcceptedByClient(t));
         repository.save(document);
     }
 
@@ -94,6 +110,48 @@ public class DocumentService {
 	}
 
 
+    private static List<DocumentDto> filter(List<DocumentDto> dtos, DocumentType type, 
+    		DocumentStatus status, Boolean acceptedItern, Boolean acceptedByClient,
+    		Client client, User author, User acceptedBy){
+        return dtos.stream()
+                 .filter(addFilter(type, documentDto -> type.equals(documentDto.getDocumentType())))
+                 .filter(addFilter(status, documentDto -> status.equals(documentDto.getDocumentStatus())))
+                 .filter(addFilter(acceptedItern, documentDto -> acceptedItern.equals(documentDto.getAcceptedItern())))
+                 .filter(addFilter(acceptedByClient, documentDto -> acceptedByClient.equals(documentDto.getAcceptedByClient())))
+                 .filter(addFilter(client, documentDto -> client.equals(documentDto.getClient())))
+                 .filter(addFilter(author, documentDto -> author.equals(documentDto.getAuthor())))
+                 .filter(addFilter(acceptedBy, documentDto -> acceptedBy.equals(documentDto.getAcceptedBy())))
+                 .collect(Collectors.toList());
+    }
+
+    private static Predicate<DocumentDto> addFilter(Object value, Predicate<DocumentDto> predicate) {
+        if(value != null){
+            return predicate;
+        }
+        return documentDto -> true;
+    }
+	
+	
+	
+	public void saveToDB(List<Document> documents) {
+		repository.save(documents);
+	}
+	
+	
+	public void importDataFromCSV(String filename) {
+		List<Document> documents = CSVUtils.buildListFromCSV(filename, Document.class);
+		saveToDB(documents);
+	}
+	
+	
+	public void exportDataToCSV(String filename) {
+		List<Document> documents = buildListFromDB();
+		CSVUtils.exportListToCSV(filename, documents);
+	}
+	
+	public List<Document> buildListFromDB() {
+		return repository.findAll();
+	}
 
     
 	

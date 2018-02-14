@@ -2,6 +2,7 @@ package pl.mwa.document;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,13 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import pl.mwa.representative.RepresentativeServiceImpl;
+import pl.mwa.util.CSVUtils;
 
 
 @RequestMapping("/documents")
 @RestController
 public class DocumentResource {
 
+	@Autowired
+	DocumentRepository repository;
+	
+	
 	
     private final DocumentService service;
 
@@ -51,7 +56,6 @@ public class DocumentResource {
     @GetMapping("/search")
     ResponseEntity getSearchRequest(@RequestParam(name="documentType", required = false) DocumentType documentType,
     		@RequestParam(name="documentStatus", required = false) DocumentStatus documentStatus ) {
-    	
     	return ResponseEntity.ok(service.getDocumentsSearch(documentType, documentStatus));
     }
     
@@ -81,6 +85,24 @@ public class DocumentResource {
         service.update(documentDto);
         return ResponseEntity.accepted().build();
     }
+
+
+	@GetMapping("/import")
+	ResponseEntity getImportListFromCSV(@RequestParam(name = "filename", required = true) String filename) {
+		return ResponseEntity.ok(CSVUtils.buildListFromCSV(filename, Document.class));
+	}
+    
+	@PostMapping("/import")
+	ResponseEntity addEntitiesFromCSV(@RequestParam(name = "filename", required = true) String filename) {
+		new DocumentService(repository).importDataFromCSV(filename);
+		return ResponseEntity.accepted().build();
+	}
+
+	@PostMapping("/export")
+	ResponseEntity exportDBtoFile(@RequestParam(name = "filename", required = true) String filename) {
+		new DocumentService(repository).exportDataToCSV(filename);
+		return ResponseEntity.accepted().build();
+	}
 
     
     @ExceptionHandler(RuntimeException.class)
