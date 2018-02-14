@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import pl.mwa.client.Client;
+import pl.mwa.user.User;
 import pl.mwa.util.CSVUtils;
 
 
@@ -58,6 +60,20 @@ public class DocumentResource {
     		@RequestParam(name="documentStatus", required = false) DocumentStatus documentStatus ) {
     	return ResponseEntity.ok(service.getDocumentsSearch(documentType, documentStatus));
     }
+    
+    @GetMapping("/search-")
+    ResponseEntity getAdditionalSearchRequest(@RequestParam(name="documentType", required = false) DocumentType documentType,
+    		@RequestParam(name="documentStatus", required = false) DocumentStatus documentStatus,
+    		@RequestParam(name="acceptedItern", required = false) Boolean acceptedItern, 
+    		@RequestParam(name="acceptedByClient", required = false) Boolean acceptedByClient,
+    		@RequestParam(name="client", required = false) Client client,
+    		@RequestParam(name="author", required = false) User author, 
+    		@RequestParam(name="acceptedBy", required = false) User acceptedBy) {
+    	return ResponseEntity.ok(service.getDocumentsSearch(documentType, documentStatus, 
+    			acceptedItern, acceptedByClient, client, author, acceptedBy));
+    }
+    
+    
     
     
     

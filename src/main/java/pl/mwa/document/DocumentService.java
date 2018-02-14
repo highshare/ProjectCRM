@@ -9,6 +9,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,10 @@ import pl.mwa.util.CSVUtils;
 
 @Service
 public class DocumentService {
+
+	
+	
+	private static final Logger log = LoggerFactory.getLogger(DocumentService.class);
 
 	
 	@Autowired
@@ -109,6 +115,15 @@ public class DocumentService {
 				.collect(Collectors.toList());
 	}
 
+	
+	List<DocumentDto> getDocumentsSearch(DocumentType documentType, DocumentStatus documentStatus, Boolean acceptedItern,
+			Boolean acceptedByClient, Client client, User author, User acceptedBy) {
+		List<DocumentDto> dtos = StreamSupport.stream(repository.findAll().spliterator(), false)
+				.map(DocumentMapper::toDto)
+				.collect(Collectors.toList());
+		return filter(dtos, documentType, documentStatus, acceptedItern,
+				acceptedByClient, client, author, acceptedBy);
+	}
 
     private static List<DocumentDto> filter(List<DocumentDto> dtos, DocumentType type, 
     		DocumentStatus status, Boolean acceptedItern, Boolean acceptedByClient,
@@ -152,6 +167,8 @@ public class DocumentService {
 	public List<Document> buildListFromDB() {
 		return repository.findAll();
 	}
+
+
 
     
 	

@@ -1,8 +1,8 @@
 package pl.mwa.document;
 
-import java.lang.reflect.InvocationTargetException;
+import org.springframework.beans.BeanUtils;
 
-import org.apache.commons.beanutils.BeanUtils;
+
 
 final class DocumentMapper {
 
@@ -12,13 +12,7 @@ final class DocumentMapper {
 	
 	static DocumentDto toDto(Document document) {
 		DocumentDto documentDto = new DocumentDto();
-		try {
-			BeanUtils.copyProperties(documentDto, document);
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
+		BeanUtils.copyProperties(document, documentDto);
 		return documentDto;
 	}
 	
