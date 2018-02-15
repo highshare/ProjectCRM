@@ -1,5 +1,7 @@
 package pl.mwa.user;
 
+import static org.junit.Assert.fail;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -12,7 +14,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -29,7 +30,6 @@ import pl.mwa.ProjectCrMbyMwaApplication;
 @SqlGroup({
     @Sql(scripts = "/clean.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 })
-@TestPropertySource("/test.properties")
 public class UserResourceTest {
 
     @LocalServerPort
@@ -41,6 +41,12 @@ public class UserResourceTest {
 		
 	}
 
+	
+	
+	
+	
+	
+	
     @Test
     public void should_create_user() throws IOException {
         //given
@@ -83,15 +89,14 @@ public class UserResourceTest {
     
     
     
+    
+    
 /*	@Test
 	public void testUserResource() {
 		fail("Not yet implemented");
-	}
+	}*/
 
-	@Test
-	public void testGetUser() {
-		fail("Not yet implemented");
-	}
+
 
 	@Test
 	public void testGetUsers() {
@@ -116,7 +121,7 @@ public class UserResourceTest {
 	@Test
 	public void testHandleException() {
 		fail("Not yet implemented");
-	}*/
+	}
 
    @Test
     public void test() throws UnsupportedEncodingException {

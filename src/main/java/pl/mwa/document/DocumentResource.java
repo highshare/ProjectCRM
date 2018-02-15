@@ -60,13 +60,8 @@ public class DocumentResource {
     }
     
     
-    @GetMapping("/search")
-    ResponseEntity getSearchRequest(@RequestParam(name="documentType", required = false) DocumentType documentType,
-    		@RequestParam(name="documentStatus", required = false) DocumentStatus documentStatus ) {
-    	return ResponseEntity.ok(service.getDocumentsSearch(documentType, documentStatus));
-    }
     
-    @GetMapping("/search-")
+    @GetMapping("/search")
     ResponseEntity getAdditionalSearchRequest(@RequestParam(name="documentType", required = false) DocumentType documentType,
     		@RequestParam(name="documentStatus", required = false) DocumentStatus documentStatus,
     		@RequestParam(name="acceptedItern", required = false) Boolean acceptedItern, 
@@ -120,7 +115,7 @@ public class DocumentResource {
 		return ResponseEntity.accepted().build();
 	}
 
-	@PostMapping("/export")
+	@GetMapping("/export")
 	ResponseEntity exportDBtoFile(@RequestParam(name = "filename", required = true) String filename) {
 		new DocumentService(repository).exportDataToCSV(filename);
 		return ResponseEntity.accepted().build();

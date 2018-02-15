@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,16 +14,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import pl.mwa.document.Document;
+import pl.mwa.document.DocumentRepository;
 import pl.mwa.document.DocumentResource;
+import pl.mwa.document.DocumentService;
 import pl.mwa.exception.ModelNotFound;
+import pl.mwa.position.Position;
+import pl.mwa.util.CSVUtils;
 
 
 @RequestMapping("/users")
 @RestController
 public class UserResource {
 
+	@Autowired
+	UserRepository repository;
+
+	
 	
 	private final UserService service;
 	
@@ -42,7 +53,28 @@ public class UserResource {
 		return ResponseEntity.ok(service.getUser(id));
 	}
 	
+	
+	@GetMapping("/username/{username}")
+	ResponseEntity getUser(@PathVariable("username") String username) {
+		return ResponseEntity.ok(service.findByUserName(username));
+	}
 
+	
+    @GetMapping("/search")
+    ResponseEntity getAdditionalSearchRequest(@RequestParam(name="username", required = false) String username,
+    		@RequestParam(name="firstname", required = false) String firstname,
+    		@RequestParam(name="lastname", required = false) String lastname, 
+    		@RequestParam(name="email", required = false) String email,
+    		@RequestParam(name="phone", required = false) String phone,
+    		@RequestParam(name="active", required = false) Boolean active, 
+    		@RequestParam(name="position", required = false) Position position) {
+    	return ResponseEntity.ok(service.getUserSearch(username, firstname, 
+    			lastname, email, phone, active, position));
+    }
+	
+	
+	
+	
 	@GetMapping
 	ResponseEntity getUsers() {
 		return ResponseEntity.ok(service.getUsers());
@@ -59,8 +91,11 @@ public class UserResource {
 	
 	@PutMapping
 	ResponseEntity updateUser(@Valid @RequestBody UserDto userDto) {
-		service.update(userDto);
-		return ResponseEntity.accepted().build();
+		if (service.isUpdated(userDto)) {
+			return ResponseEntity.accepted().build();
+		} else {
+			return ResponseEntity.badRequest().build();
+		}
 	}
 	
 	
@@ -70,6 +105,25 @@ public class UserResource {
 		return ResponseEntity.accepted().build();
 		
 	}
+	
+	
+	@GetMapping("/import")
+	ResponseEntity getImportListFromCSV(@RequestParam(name = "filename", required = true) String filename) {
+		return ResponseEntity.ok(CSVUtils.buildListFromCSV(filename, User.class));
+	}
+    
+	@PostMapping("/import")
+	ResponseEntity addEntitiesFromCSV(@RequestParam(name = "filename", required = true) String filename) {
+		new UserService(repository).importDataFromCSV(filename);
+		return ResponseEntity.accepted().build();
+	}
+
+	@GetMapping("/export")
+	ResponseEntity exportDBtoFile(@RequestParam(name = "filename", required = true) String filename) {
+		new UserService(repository).exportDataToCSV(filename);
+		return ResponseEntity.accepted().build();
+	}
+	
 	
 	
     @ExceptionHandler(ModelNotFound.class)
