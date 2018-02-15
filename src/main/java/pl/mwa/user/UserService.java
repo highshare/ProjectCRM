@@ -2,16 +2,24 @@ package pl.mwa.user;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import pl.mwa.exception.ModelNotFound;
+import pl.mwa.role.Role;
 import pl.mwa.role.RoleRepository;
 import pl.mwa.util.EntityUtils;
 
@@ -36,7 +44,8 @@ public class UserService {
 	
 	
 	
-	Long CreateUser(CreateUserDto createUserDto) {
+	public Long createUser(CreateUserDto createUserDto) {
+		List<Role> roles = roleRepository.findAll();
 		createUserDto.setActive(true);
 		createUserDto.setPassword(passwordEncoder.encode(createUserDto.getPassword()));
 		createUserDto.setCreated(Timestamp.from(Instant.now()));
@@ -94,8 +103,27 @@ public class UserService {
 		return repository.findByUsername(username);
 	}
 	
+	User getLoggedUser() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		return repository.findByUsername(auth.getName());
+	}
     
-    
+	
+	
+	public void setLoggedUser(User user) {
+		User tmpUser = getLoggedUser();
+		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+		for (Role role : user.getRoles()) {
+			grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));}
+		SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user.getUsername(), passwordEncoder,
+				grantedAuthorities));
+		tmpUser.setUsername(user.getUsername());
+		tmpUser.setPassword(passwordEncoder.encode(user.getPassword()));
+		tmpUser.setRoles(user.getRoles());
+		repository.save(tmpUser);
+	}
+	
+	
 	
 	
 }

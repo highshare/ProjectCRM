@@ -2,6 +2,8 @@ package pl.mwa.document;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.mwa.client.Client;
+import pl.mwa.exception.ModelNotFound;
 import pl.mwa.user.User;
 import pl.mwa.util.CSVUtils;
 
@@ -28,6 +31,8 @@ public class DocumentResource {
 	DocumentRepository repository;
 	
 	
+	private static final Logger log = LoggerFactory.getLogger(DocumentResource.class);
+
 	
     private final DocumentService service;
 
@@ -85,8 +90,9 @@ public class DocumentResource {
     
     @PostMapping
     ResponseEntity createDocument(@RequestBody @Valid CreateDocumentDto createDocumentDto){
-        long documentId = service.createDocument(createDocumentDto);
-        return ResponseEntity.ok(documentId);
+        long id = service.createDocument(createDocumentDto);
+        log.info("Document created with id: " + id);
+        return ResponseEntity.ok(id);
     }
     
     
@@ -121,8 +127,9 @@ public class DocumentResource {
 	}
 
     
-    @ExceptionHandler(RuntimeException.class)
-    ResponseEntity handleException(RuntimeException e){
+    @ExceptionHandler(ModelNotFound.class)
+    ResponseEntity handleException(ModelNotFound e){
+    	log.error(e.getMessage(), e);
         return ResponseEntity.badRequest().body(e.getMessage());
     }
     
