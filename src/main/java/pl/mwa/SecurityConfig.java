@@ -33,9 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/**").authenticated()
 		.antMatchers("/admin").hasRole("ADMIN")
 		.antMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
-		.antMatchers(HttpMethod.DELETE, "/users").hasRole("ADMIN")
+		.antMatchers(HttpMethod.DELETE, "/users/").hasRole("ADMIN")
+		.and().formLogin().defaultSuccessUrl("/representative/listall")
 		.and().httpBasic()
-		
+		.and().logout().permitAll()
 		;
 	}
 

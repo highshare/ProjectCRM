@@ -148,23 +148,23 @@ public class DocumentService {
 	
 	
 	
-	public void saveToDB(List<Document> documents) {
+	void saveToDB(List<Document> documents) {
 		repository.save(documents);
 	}
 	
 	
-	public void importDataFromCSV(String filename) {
+	void importDataFromCSV(String filename) {
 		List<Document> documents = CSVUtils.buildListFromCSV(filename, Document.class);
 		saveToDB(documents);
 	}
 	
 	
-	public void exportDataToCSV(String filename) {
+	void exportDataToCSV(String filename) {
 		List<Document> documents = buildListFromDB();
 		CSVUtils.exportListToCSV(filename, documents);
 	}
 	
-	public List<Document> buildListFromDB() {
+	List<Document> buildListFromDB() {
 		return repository.findAll();
 	}
 

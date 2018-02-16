@@ -27,19 +27,19 @@ public class UserDto {
 	@NotNull
 	private Long id;
 	
-	@NotBlank
+
 	private String username;
 	
-	@NotBlank
+
 	private String password;
 	
-	@NotBlank
+
 	private String firstname;
 	
-	@NotBlank
+
 	private String lastname;
 	
-	@NotBlank
+
 	@Email
 	private String email;
 	

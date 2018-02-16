@@ -5,7 +5,6 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +20,7 @@ public class HomeController {
 	
 	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
-/*	private final UserService userService;
+	private final UserService userService;
 	
 	
 	private final RoleService roleService;
@@ -30,12 +29,12 @@ public class HomeController {
 	public HomeController(UserService userService, RoleService roleService) {
 		this.userService = userService;
 		this.roleService = roleService;
-	}*/
+	}
 	
-	@ResponseBody
-	@GetMapping("/")
+
+	@GetMapping("/login")
 	public String home() {
-		return "welcome";
+		return "/";
 	}
 	
 	@ResponseBody
@@ -45,7 +44,7 @@ public class HomeController {
 	}
 	
 	
-/*	@GetMapping("/add-user")
+	@GetMapping("/add-user")
 	@ResponseBody
 	public String addUser() {
 		CreateUserDto u = new CreateUserDto();
@@ -59,7 +58,7 @@ public class HomeController {
 		u.setEmail("admin@admin.pl");
 		userService.createUser(u);
 		return "add-user";
-	}*/
+	}
 	
 	
 	

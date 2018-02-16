@@ -40,8 +40,8 @@ public class UserService {
 	@Autowired
 	RoleRepository roleRepository;
 	
-	
-	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 
 	public UserService(UserRepository repository, RoleRepository roleRepository,
 			BCryptPasswordEncoder passwordEncoder) {
@@ -66,11 +66,16 @@ public class UserService {
 	}
 
 
-
-
+	/**
+	 * This method creates {@link User}
+	 * @param createUserDto
+	 * @return new user id
+	 */
 	public Long createUser(CreateUserDto createUserDto) {
 		createUserDto.setActive(true);
-		createUserDto.setPassword(passwordEncoder.encode(createUserDto.getPassword()));
+		createUserDto.setPassword
+		(passwordEncoder.encode
+				(createUserDto.getPassword()));
 		createUserDto.setCreated(Timestamp.from(Instant.now()));
 		User user = repository.save(UserMapper.toEntity(createUserDto));
 		return user.getId();
@@ -79,17 +84,28 @@ public class UserService {
 	UserDto getUser(Long id) {
 		return repository.findById(id).map(UserMapper::toDto).orElseThrow(() -> new ModelNotFound("User", id));
 	}
-
+	
+	/**
+	 * This method gets all users from repository
+	 * @return
+	 */
 	List<UserDto> getUsers() {
 		return StreamSupport.stream(repository.findAll().spliterator(), false).map(UserMapper::toDto)
 				.collect(Collectors.toList());
 	}
-
+	
 	void deleteUser(Long id) {
 		User user = repository.findById(id).orElseThrow(() -> new ModelNotFound("User", id));
 		repository.delete(user);
 	}
-
+	
+	
+	
+	/**
+	 * This method updates user if user has role ADMIN or user.id == logged user.id 
+	 * @param userDto
+	 * @return true when update was executed
+	 */
 	boolean isUpdated(UserDto userDto) {
 		User user = repository.findById(userDto.getId()).orElseThrow(() -> new ModelNotFound("User", userDto.getId()));
 		User loggedUser = getLoggedUser().orElseThrow(() -> new ModelNotFound("User", "as logged"));
@@ -109,23 +125,39 @@ public class UserService {
 		}
 		return false;
 	}
-
+	/**
+	 * This method sets flag {@link active} on false for entity with certain id 
+	 * @param id
+	 */
 	void deactivateUser(Long id) {
 		User user = repository.findById(id).orElseThrow(() -> new ModelNotFound("User", id));
 		user.setActive(false);
 		repository.save(user);
 	}
-
+	/**
+	 * This method finds user by username 
+	 * @param username
+	 * @return user entity 
+	 */
 	public User findByUserName(String username) {
 		return repository.findByUsername(username);
 	}
-
+	/**
+	 * This method gets logged {@link User} and returns Optional 
+	 * @return Optional 
+	 */
 	Optional<User> getLoggedUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return Optional.ofNullable(repository.findByUsername(auth.getName()));
 	}
 
-	public void setLoggedUser(User user) {
+	/**
+	 * This method gets {@link User} as a parameter and get user logged in security session.
+	 *  Then logged user is updated with credentials coming from parameter and finally 
+	 *  updated user is saved to repository
+	 * @param user
+	 */
+	void setLoggedUser(User user) {
 		User tmpUser = getLoggedUser().orElseThrow(() -> new ModelNotFound("User", "as logged"));
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 		for (Role role : user.getRoles()) {
@@ -169,28 +201,28 @@ public class UserService {
     }
 	
 	
-	   private static Predicate<UserDto> addFilter(Object value, Predicate<UserDto> predicate) {
-	        if(value != null){
-	            return predicate;
-	        }
-	        return userDto -> true;
-	    }
+	private static Predicate<UserDto> addFilter(Object value, Predicate<UserDto> predicate) {
+		if (value != null) {
+			return predicate;
+		}
+		return userDto -> true;
+	}
 
-	public void importDataFromCSV(String filename) {
+	void importDataFromCSV(String filename) {
 		List<User> users = CSVUtils.buildListFromCSV(filename, User.class);
 		saveToDB(users);
 	}
 	
-	public void saveToDB(List<User> users) {
+	void saveToDB(List<User> users) {
 		repository.save(users);
 	}
 
-	public void exportDataToCSV(String filename) {
+	void exportDataToCSV(String filename) {
 		List<User> users = buildListFromDB();
 		CSVUtils.exportListToCSV(filename, users);
 	}
 	
-	public List<User> buildListFromDB() {
+	List<User> buildListFromDB() {
 		return repository.findAll();
 	}
 	

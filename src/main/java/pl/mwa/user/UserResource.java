@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import pl.mwa.document.Document;
-import pl.mwa.document.DocumentRepository;
 import pl.mwa.document.DocumentResource;
-import pl.mwa.document.DocumentService;
 import pl.mwa.exception.ModelNotFound;
 import pl.mwa.position.Position;
 import pl.mwa.util.CSVUtils;
@@ -80,7 +78,7 @@ public class UserResource {
 		return ResponseEntity.ok(service.getUsers());
 	}
 	
-	
+	@Secured("ROLE_ADMIN")
 	@PostMapping
 	ResponseEntity createUser(@Valid @RequestBody CreateUserDto createUserDto ) {
 		long id = service.createUser(createUserDto);
@@ -98,7 +96,7 @@ public class UserResource {
 		}
 	}
 	
-	
+	@Secured("ROLE_ADMIN")
 	@DeleteMapping("/{id}")
 	ResponseEntity deleteUser(@PathVariable("id") Long id) {
 		service.deactivateUser(id);
