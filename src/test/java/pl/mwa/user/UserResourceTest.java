@@ -91,37 +91,7 @@ public class UserResourceTest {
     
     
     
-/*	@Test
-	public void testUserResource() {
-		fail("Not yet implemented");
-	}*/
 
-
-
-	@Test
-	public void testGetUsers() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCreateUser() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUpdateUser() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testDeleteUser() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHandleException() {
-		fail("Not yet implemented");
-	}
 
    @Test
     public void test() throws UnsupportedEncodingException {
