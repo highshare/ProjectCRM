@@ -4,6 +4,7 @@ Although Thymeleaf lib is implemented for operations on entity "Representative" 
 
 ## Implemented functionalities
 CRUD operations on following end points: representatives, clients, users, groups, documents
+
 Swagger UI attached
 
 
