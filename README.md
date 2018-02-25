@@ -3,8 +3,8 @@ It is the final project prepared during Coderslab - Amelco dedicated Java EE boo
 Although Thymeleaf lib is implemented for operations on entity "Representative" App works mainly on rest APIs.
 
 ## Implemented functionalities
-CRUD operations on following end points: representatives, clients, users, groups, documents
+CRUD operations on following end points: representatives, clients, users, groups, documents.
 
-Swagger UI attached
+Swagger UI attached.
 
 
