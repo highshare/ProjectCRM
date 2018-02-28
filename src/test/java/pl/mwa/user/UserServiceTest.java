@@ -60,8 +60,9 @@ public class UserServiceTest {
 	
 	@Test
 	public void given_user_when_find_other_then_isNotEqual() {
+		new User();
 		//given
-		User user = new User()
+		User user = User
 				.builder()
 				.username("alfa")
 				.firstname("beta")
@@ -73,10 +74,10 @@ public class UserServiceTest {
 		//when
 		User user2 = service.findByUserName("alfa");
 		//then
-		assertNotEquals("alfa1",user.getUsername());
-		assertNotEquals("beta1",user.getFirstname());
-		assertNotEquals("gamma1",user.getLastname());
-		assertNotEquals("beta@alfa.pl",user.getEmail());
+		assertNotEquals("alfa1",user2.getUsername());
+		assertNotEquals("beta1",user2.getFirstname());
+		assertNotEquals("gamma1",user2.getLastname());
+		assertNotEquals("beta@alfa.pl",user2.getEmail());
 	}
 	
 	

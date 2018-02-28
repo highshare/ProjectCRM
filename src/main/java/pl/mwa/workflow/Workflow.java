@@ -40,7 +40,7 @@ import pl.mwa.user.User;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="worflows")
+@Table(name="workflows")
 public class Workflow {
 
 	

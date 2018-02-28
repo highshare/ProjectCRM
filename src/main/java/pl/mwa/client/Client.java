@@ -2,11 +2,16 @@ package pl.mwa.client;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -15,7 +20,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.mwa.address.Address;
 import pl.mwa.representative.Representative;
+import pl.mwa.user.User;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,15 +34,28 @@ public class Client {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@NotBlank
+	@Column(nullable = false, unique = true)
 	private String name;
+
 	
-	private boolean active;
+	private String abbr;
+	
+	private Boolean active;
+	
+	
+	@ManyToOne
+	private User responsible;
 	
 	@OneToMany
 	private Collection<Representative> representatives;
 	
+	@OneToOne(mappedBy="client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Address address;
+	
+	
+	private Industry industry;
 	
 }

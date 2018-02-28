@@ -104,7 +104,7 @@ public class UserService {
 	/**
 	 * This method updates user if user has role ADMIN or user.id == logged user.id 
 	 * @param userDto
-	 * @return true when update was executed
+	 * @return true when an update was executed
 	 */
 	boolean isUpdated(UserDto userDto) {
 		User user = repository.findById(userDto.getId()).orElseThrow(() -> new ModelNotFound("User", userDto.getId()));
