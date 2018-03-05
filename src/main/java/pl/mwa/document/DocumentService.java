@@ -18,6 +18,7 @@ import pl.mwa.client.Client;
 import pl.mwa.exception.ModelNotFound;
 import pl.mwa.user.User;
 import pl.mwa.util.CSVUtils;
+import pl.mwa.util.EntityUtils;
 
 @Service
 public class DocumentService {
@@ -77,26 +78,21 @@ public class DocumentService {
         repository.delete(document);
     }
     
-    private static <T> void setter(T value, Consumer<T> setter){
-        Objects.requireNonNull(setter);
-        if(value != null){
-            setter.accept(value);
-        }
-    }
+
 
     void update(DocumentDto documentDto){
         Document document = repository.findById(documentDto.getId())
                 .orElseThrow(() -> new ModelNotFound("Document", documentDto.getId()));
-        setter(documentDto.getTitle(), t -> document.setTitle(t));
-        setter(documentDto.getDocumentType(), t -> document.setDocumentType(t));
-        setter(documentDto.getDocumentStatus(), t -> document.setDocumentStatus(t));
-        setter(documentDto.getDescription(), t -> document.setDescription(t));
-        setter(documentDto.getClient(), t -> document.setClient(t));
-        setter(documentDto.getValue(), t -> document.setValue(t));
-        setter(documentDto.getAuthor(), t -> document.setAuthor(t));
-        setter(documentDto.getAcceptedBy(), t -> document.setAcceptedBy(t));
-        setter(documentDto.getAcceptedItern(), t -> document.setAcceptedItern(t));
-        setter(documentDto.getAcceptedByClient(), t -> document.setAcceptedByClient(t));
+        EntityUtils.setter(documentDto.getTitle(), t -> document.setTitle(t));
+        EntityUtils.setter(documentDto.getDocumentType(), t -> document.setDocumentType(t));
+        EntityUtils.setter(documentDto.getDocumentStatus(), t -> document.setDocumentStatus(t));
+        EntityUtils.setter(documentDto.getDescription(), t -> document.setDescription(t));
+        EntityUtils.setter(documentDto.getClient(), t -> document.setClient(t));
+        EntityUtils.setter(documentDto.getValue(), t -> document.setValue(t));
+        EntityUtils.setter(documentDto.getAuthor(), t -> document.setAuthor(t));
+        EntityUtils.setter(documentDto.getAcceptedBy(), t -> document.setAcceptedBy(t));
+        EntityUtils.setter(documentDto.getAcceptedItern(), t -> document.setAcceptedItern(t));
+        EntityUtils.setter(documentDto.getAcceptedByClient(), t -> document.setAcceptedByClient(t));
         repository.save(document);
     }
 
