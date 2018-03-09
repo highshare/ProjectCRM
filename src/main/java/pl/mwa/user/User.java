@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -21,12 +21,15 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.mwa.position.Position;
 import pl.mwa.role.Role;
+import pl.mwa.team.Team;
 
 
 
@@ -80,5 +83,9 @@ public class User {
 	private Set<Role> roles;
 	
 	private Position position;
+	
+	@OneToOne(mappedBy="leader", fetch = FetchType.EAGER )
+	@JsonManagedReference
+	private Team leading; 
 	
 }

@@ -14,6 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.mwa.position.Position;
 import pl.mwa.role.Role;
+import pl.mwa.team.Team;
 
 
 
@@ -50,5 +51,6 @@ public class CreateUserDto {
 	
 	private Position position;
 	
+	private Team leading;
 	
 }

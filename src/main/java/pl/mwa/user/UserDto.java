@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.mwa.position.Position;
 import pl.mwa.role.Role;
+import pl.mwa.team.Team;
 
 
 
@@ -54,6 +54,6 @@ public class UserDto {
 	
 	private Position position;
 
-	
+	private Team leading;
 	
 }

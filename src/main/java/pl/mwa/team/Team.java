@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,6 +38,7 @@ public class Team {
 	private String name;
 	
 	@OneToOne
+	@JsonBackReference
 	private User leader;
 	
 	
