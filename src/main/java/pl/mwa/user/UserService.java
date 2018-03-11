@@ -94,12 +94,24 @@ public class UserService {
 				.collect(Collectors.toList());
 	}
 	
+	List<UserDto> getUsersWithPosition(Position position) {
+		return StreamSupport.stream(repository.findByPosition(position).spliterator(), false)
+				.map(UserMapper::toDto)
+				.collect(Collectors.toList());
+	}
+	
+	List<UserDto> getUserWithRole(Role role) {
+		return repository.findByRolesIn(role).stream()
+				.map(UserMapper::toDto)
+				.collect(Collectors.toList());
+	}
+	
+	
 	void deleteUser(Long id) {
 		User user = repository.findById(id).orElseThrow(() -> new ModelNotFound("User", id));
 		repository.delete(user);
 	}
-	
-	
+
 	
 	/**
 	 * This method updates user if user has role ADMIN or user.id == logged user.id 

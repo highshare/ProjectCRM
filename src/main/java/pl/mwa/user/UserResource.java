@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.mwa.document.DocumentResource;
 import pl.mwa.exception.ModelNotFound;
 import pl.mwa.position.Position;
+import pl.mwa.role.Role;
 import pl.mwa.util.CSVUtils;
 
 
@@ -57,6 +58,10 @@ public class UserResource {
 		return ResponseEntity.ok(service.findByUserName(username));
 	}
 
+	@GetMapping("/position/{position}")
+	ResponseEntity getUser(@PathVariable("position") Position position) {
+		return ResponseEntity.ok(service.getUsersWithPosition(position));
+	}
 	
     @GetMapping("/search")
     ResponseEntity getAdditionalSearchRequest(@RequestParam(name="username", required = false) String username,
@@ -71,7 +76,10 @@ public class UserResource {
     }
 	
 	
-	
+	@GetMapping("/role/{role}")
+	ResponseEntity getUser(@PathVariable("role") Role role) {
+		return ResponseEntity.ok(service.getUserWithRole(role));
+	}
 	
 	@GetMapping
 	ResponseEntity getUsers() {

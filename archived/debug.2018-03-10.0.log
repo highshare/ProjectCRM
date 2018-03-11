@@ -1,0 +1,221 @@
+2018-03-10 10:48:15 - Starting ProjectCrMbyMwaApplication on mikolaj-SATELLITE-PRO-U500 with PID 4028 (/home/mikolaj/Documents/workspace-sts5/ProjectCRMbyMWA/target/classes started by mikolaj in /home/mikolaj/Documents/workspace-sts5/ProjectCRMbyMWA)
+2018-03-10 10:48:15 - No active profile set, falling back to default profiles: default
+2018-03-10 10:48:16 - HV000001: Hibernate Validator 5.3.6.Final
+2018-03-10 10:48:16 - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@61919a18: startup date [Sat Mar 10 10:48:16 CET 2018]; root of context hierarchy
+2018-03-10 10:48:18 - Overriding bean definition for bean 'managementServletContext' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration; factoryMethodName=managementServletContext; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/actuate/autoconfigure/EndpointWebMvcHypermediaManagementContextConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration; factoryMethodName=managementServletContext; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/actuate/autoconfigure/EndpointWebMvcAutoConfiguration.class]]
+2018-03-10 10:48:20 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b8c804d2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-03-10 10:48:21 - Tomcat initialized with port(s): 8080 (http)
+2018-03-10 10:48:21 - Starting service [Tomcat]
+2018-03-10 10:48:21 - Starting Servlet Engine: Apache Tomcat/8.5.27
+2018-03-10 10:48:21 - Initializing Spring embedded WebApplicationContext
+2018-03-10 10:48:21 - Root WebApplicationContext: initialization completed in 5314 ms
+2018-03-10 10:48:22 - Mapping filter: 'metricsFilter' to: [/*]
+2018-03-10 10:48:22 - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-03-10 10:48:22 - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-03-10 10:48:22 - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-03-10 10:48:22 - Mapping filter: 'requestContextFilter' to: [/*]
+2018-03-10 10:48:22 - Mapping filter: 'springSecurityFilterChain' to: [/*]
+2018-03-10 10:48:22 - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+2018-03-10 10:48:22 - Mapping filter: 'applicationContextIdFilter' to: [/*]
+2018-03-10 10:48:22 - Mapping servlet: 'dispatcherServlet' to [/]
+2018-03-10 10:48:23 - Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-03-10 10:48:23 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-03-10 10:48:23 - HHH000412: Hibernate Core {5.0.12.Final}
+2018-03-10 10:48:23 - HHH000206: hibernate.properties not found
+2018-03-10 10:48:23 - HHH000021: Bytecode provider name : javassist
+2018-03-10 10:48:23 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-03-10 10:48:24 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-03-10 10:48:25 - HHH000227: Running hbm2ddl schema export
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table addresses drop foreign key FKrf3c1s9gxxx0wubkv5maokv9y
+2018-03-10 10:48:25 - Table 'projcrmdb1.addresses' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table clients drop foreign key FKexb8v5d45kilinnn9n8n1exxj
+2018-03-10 10:48:25 - Table 'projcrmdb1.clients' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table clients_representatives drop foreign key FKdr5xwg72f08h59udnicyqse14
+2018-03-10 10:48:25 - Table 'projcrmdb1.clients_representatives' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table clients_representatives drop foreign key FK5kvwqv6f9ffwpo4kppq8c5g3w
+2018-03-10 10:48:25 - Table 'projcrmdb1.clients_representatives' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table documents drop foreign key FKro98etmfueja5fmbod21w7byi
+2018-03-10 10:48:25 - Table 'projcrmdb1.documents' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table documents drop foreign key FKkxttj4tp5le2uth212lu49vny
+2018-03-10 10:48:25 - Table 'projcrmdb1.documents' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table documents drop foreign key FKixuco32pk6hwb9k015vm27b1m
+2018-03-10 10:48:25 - Table 'projcrmdb1.documents' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table representatives drop foreign key FKf6vdslo2ou8elpchblu6qm3a4
+2018-03-10 10:48:25 - Table 'projcrmdb1.representatives' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table teams drop foreign key FK1unglgeiypxqm05k3sxh7web4
+2018-03-10 10:48:25 - Table 'projcrmdb1.teams' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table teams_members drop foreign key FKgkdwlbkpn9kldrdkxw2on0ii4
+2018-03-10 10:48:25 - Table 'projcrmdb1.teams_members' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table teams_members drop foreign key FK4pucaacixk5i6dae9jx6c9hj4
+2018-03-10 10:48:25 - Table 'projcrmdb1.teams_members' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table users_roles drop foreign key FKj6m8fwv7oqv74fcehir1a9ffy
+2018-03-10 10:48:25 - Table 'projcrmdb1.users_roles' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table users_roles drop foreign key FK2o0jvgh89lemvvo17cbqvdxaa
+2018-03-10 10:48:25 - Table 'projcrmdb1.users_roles' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table workflows drop foreign key FKf7m7f1gn82xelgot0whfj6hbv
+2018-03-10 10:48:25 - Table 'projcrmdb1.workflows' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table workflows drop foreign key FKoef4yr5yrsf7oyaewq8k1wl98
+2018-03-10 10:48:25 - Table 'projcrmdb1.workflows' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table workflows drop foreign key FKb59072mdchyffs6xjto7wln1h
+2018-03-10 10:48:25 - Table 'projcrmdb1.workflows' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table workflows_documents drop foreign key FK6pcb5ks4mjst30yli6riitisj
+2018-03-10 10:48:25 - Table 'projcrmdb1.workflows_documents' doesn't exist
+2018-03-10 10:48:25 - HHH000389: Unsuccessful: alter table workflows_documents drop foreign key FK6om9dfq9ajw48m5ug01508r9b
+2018-03-10 10:48:25 - Table 'projcrmdb1.workflows_documents' doesn't exist
+2018-03-10 10:49:13 - HHH000230: Schema export complete
+2018-03-10 10:49:13 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-03-10 10:49:14 - Executing SQL script from URL [file:/home/mikolaj/Documents/workspace-sts5/ProjectCRMbyMWA/target/classes/data.sql]
+2018-03-10 10:49:17 - Executed SQL script from URL [file:/home/mikolaj/Documents/workspace-sts5/ProjectCRMbyMWA/target/classes/data.sql] in 3221 ms.
+2018-03-10 10:49:19 - Mapped "{[/addresses],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.address.AddressResource.getAddresses()
+2018-03-10 10:49:19 - Mapped "{[/addresses/search],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.address.AddressResource.getSearchRequestAddresses(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,pl.mwa.client.Client)
+2018-03-10 10:49:19 - Mapped "{[/addresses],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.address.AddressResource.createAddress(pl.mwa.address.CreateAddressDto)
+2018-03-10 10:49:19 - Mapped "{[/addresses],methods=[PUT]}" onto org.springframework.http.ResponseEntity pl.mwa.address.AddressResource.updateAddress(pl.mwa.address.AddressDto)
+2018-03-10 10:49:19 - Mapped "{[/addresses/{id}],methods=[DELETE]}" onto org.springframework.http.ResponseEntity pl.mwa.address.AddressResource.deleteAddress(long)
+2018-03-10 10:49:19 - Mapped "{[/addresses/{id}],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.address.AddressResource.getAddress(java.lang.Long)
+2018-03-10 10:49:19 - Mapped "{[/client/add],methods=[GET]}" onto public java.lang.String pl.mwa.client.ClientController.add(org.springframework.ui.Model)
+2018-03-10 10:49:19 - Mapped "{[/client/add],methods=[POST]}" onto public java.lang.String pl.mwa.client.ClientController.add(pl.mwa.client.Client,org.springframework.validation.BindingResult)
+2018-03-10 10:49:19 - Mapped "{[/clients/{id}],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.client.ClientResource.getClient(java.lang.Long)
+2018-03-10 10:49:19 - Mapped "{[/clients],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.client.ClientResource.getClients()
+2018-03-10 10:49:19 - Mapped "{[/clients],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.client.ClientResource.createClient(pl.mwa.client.Client)
+2018-03-10 10:49:19 - Mapped "{[/clients/{id}],methods=[DELETE]}" onto org.springframework.http.ResponseEntity pl.mwa.client.ClientResource.deleteClient(java.lang.Long)
+2018-03-10 10:49:19 - Mapped "{[/clients],methods=[PUT]}" onto org.springframework.http.ResponseEntity pl.mwa.client.ClientResource.updateClient(pl.mwa.client.Client)
+2018-03-10 10:49:19 - Mapped "{[/clients/import],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.client.ClientResource.getImportListFromCSV(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/clients/import],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.client.ClientResource.addEntitiesFromCSV(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/clients/export],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.client.ClientResource.exportDBtoFile(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/login],methods=[GET]}" onto public java.lang.String pl.mwa.controller.HomeController.home()
+2018-03-10 10:49:19 - Mapped "{[/add-user],methods=[GET]}" onto public java.lang.String pl.mwa.controller.HomeController.addUser()
+2018-03-10 10:49:19 - Mapped "{[/admin],methods=[GET]}" onto public java.lang.String pl.mwa.controller.HomeController.admin()
+2018-03-10 10:49:19 - Mapped "{[/documents/{id}],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.getDocument(long)
+2018-03-10 10:49:19 - Mapped "{[/documents/import],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.getImportListFromCSV(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/documents/import],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.addEntitiesFromCSV(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/documents/export],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.exportDBtoFile(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/documents],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.createDocument(pl.mwa.document.CreateDocumentDto)
+2018-03-10 10:49:19 - Mapped "{[/documents/{id}],methods=[DELETE]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.deleteDocument(long)
+2018-03-10 10:49:19 - Mapped "{[/documents],methods=[PUT]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.updateDocument(pl.mwa.document.DocumentDto)
+2018-03-10 10:49:19 - Mapped "{[/documents/status/{documentStatus}],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.getDocuments(pl.mwa.document.DocumentStatus)
+2018-03-10 10:49:19 - Mapped "{[/documents/type/{documentType}],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.getDocuments(pl.mwa.document.DocumentType)
+2018-03-10 10:49:19 - Mapped "{[/documents],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.getDocuments()
+2018-03-10 10:49:19 - Mapped "{[/documents/search],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.document.DocumentResource.getAdditionalSearchRequest(pl.mwa.document.DocumentType,pl.mwa.document.DocumentStatus,java.lang.Boolean,java.lang.Boolean,pl.mwa.client.Client,pl.mwa.user.User,pl.mwa.user.User)
+2018-03-10 10:49:19 - Mapped "{[/representative/view/{id}],methods=[POST]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.view()
+2018-03-10 10:49:19 - Mapped "{[/representative/view/{id}],methods=[GET]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.view(long,org.springframework.ui.Model)
+2018-03-10 10:49:19 - Mapped "{[/representative/edit/{id}],methods=[GET]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.edit(long,org.springframework.ui.Model)
+2018-03-10 10:49:19 - Mapped "{[/representative/edit/{id}],methods=[POST]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.edit(pl.mwa.representative.Representative,org.springframework.validation.BindingResult)
+2018-03-10 10:49:19 - Mapped "{[/representative/listall],methods=[GET]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.listAll(org.springframework.ui.Model,org.springframework.data.domain.Pageable)
+2018-03-10 10:49:19 - Mapped "{[/representative/import],methods=[POST]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.getImportFileName(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/representative/import],methods=[GET]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.getImportFileName(org.springframework.ui.Model)
+2018-03-10 10:49:19 - Mapped "{[/representative/export],methods=[GET]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.getExportFileName(org.springframework.ui.Model)
+2018-03-10 10:49:19 - Mapped "{[/representative/export],methods=[POST]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.getExportFileName(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/representative/add],methods=[GET]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.add(org.springframework.ui.Model)
+2018-03-10 10:49:19 - Mapped "{[/representative/add],methods=[POST]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.add(pl.mwa.representative.Representative,org.springframework.validation.BindingResult)
+2018-03-10 10:49:19 - Mapped "{[/representative/remove/{id}],methods=[POST]}" onto public java.lang.String pl.mwa.representative.RepresentativeController.remove(long)
+2018-03-10 10:49:19 - Mapped "{[/representatives/import],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.representative.RepresentativeResource.getImportListFromCSV(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/representatives/import],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.representative.RepresentativeResource.addEntitiesFromCSV(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/representatives/export],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.representative.RepresentativeResource.exportDBtoFile(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/representatives/{id}],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.representative.RepresentativeResource.getRepresentative(java.lang.Long)
+2018-03-10 10:49:19 - Mapped "{[/representatives],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.representative.RepresentativeResource.getRepresentatives()
+2018-03-10 10:49:19 - Mapped "{[/representatives],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.representative.RepresentativeResource.createRepresentative(pl.mwa.representative.Representative)
+2018-03-10 10:49:19 - Mapped "{[/representatives/{id}],methods=[DELETE]}" onto org.springframework.http.ResponseEntity pl.mwa.representative.RepresentativeResource.deleteRepresentative(java.lang.Long)
+2018-03-10 10:49:19 - Mapped "{[/representatives],methods=[PUT]}" onto org.springframework.http.ResponseEntity pl.mwa.representative.RepresentativeResource.updateRepresentative(pl.mwa.representative.Representative)
+2018-03-10 10:49:19 - Mapped "{[/teams/{id}],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.team.TeamResource.getTeam(java.lang.Long)
+2018-03-10 10:49:19 - Mapped "{[/teams],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.team.TeamResource.getTeams()
+2018-03-10 10:49:19 - Mapped "{[/teams],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.team.TeamResource.createTeam(pl.mwa.team.Team)
+2018-03-10 10:49:19 - Mapped "{[/teams],methods=[PUT]}" onto org.springframework.http.ResponseEntity pl.mwa.team.TeamResource.updateTeam(pl.mwa.team.Team)
+2018-03-10 10:49:19 - Mapped "{[/teams/{id}],methods=[DELETE]}" onto org.springframework.http.ResponseEntity pl.mwa.team.TeamResource.deleteTeam(java.lang.Long)
+2018-03-10 10:49:19 - Mapped "{[/users/import],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.getImportListFromCSV(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/users/import],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.addEntitiesFromCSV(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/users/export],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.exportDBtoFile(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/users/search],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.getAdditionalSearchRequest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.Boolean,pl.mwa.position.Position)
+2018-03-10 10:49:19 - Mapped "{[/users],methods=[POST]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.createUser(pl.mwa.user.CreateUserDto)
+2018-03-10 10:49:19 - Mapped "{[/users],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.getUsers()
+2018-03-10 10:49:19 - Mapped "{[/users],methods=[PUT]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.updateUser(pl.mwa.user.UserDto)
+2018-03-10 10:49:19 - Mapped "{[/users/{id}],methods=[DELETE]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.deleteUser(java.lang.Long)
+2018-03-10 10:49:19 - Mapped "{[/users/position/{position}],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.getUser(pl.mwa.position.Position)
+2018-03-10 10:49:19 - Mapped "{[/users/{id}],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.getUser(java.lang.Long)
+2018-03-10 10:49:19 - Mapped "{[/users/username/{username}],methods=[GET]}" onto org.springframework.http.ResponseEntity pl.mwa.user.UserResource.getUser(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/v2/api-docs],methods=[GET],produces=[application/json || application/hal+json]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-03-10 10:49:19 - Mapped "{[/swagger-resources/configuration/ui]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2018-03-10 10:49:19 - Mapped "{[/swagger-resources]}" onto org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2018-03-10 10:49:19 - Mapped "{[/swagger-resources/configuration/security]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2018-03-10 10:49:19 - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-03-10 10:49:19 - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-03-10 10:49:19 - Mapped "{[/appinfo/mappings || /appinfo/mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-03-10 10:49:19 - Mapped "{[/appinfo || /appinfo.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.hateoas.ResourceSupport org.springframework.boot.actuate.endpoint.mvc.HalJsonMvcEndpoint.links()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/info || /appinfo/info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/trace || /appinfo/trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/appinfo/metrics || /appinfo/metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/docs/],produces=[text/html]}" onto public java.lang.String org.springframework.boot.actuate.endpoint.mvc.DocsMvcEndpoint.browse()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/docs],produces=[text/html]}" onto public java.lang.String org.springframework.boot.actuate.endpoint.mvc.DocsMvcEndpoint.redirect()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/dump || /appinfo/dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/appinfo/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)
+2018-03-10 10:49:19 - Mapped "{[/appinfo/loggers || /appinfo/loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/autoconfig || /appinfo/autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/configprops || /appinfo/configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/heapdump || /appinfo/heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+2018-03-10 10:49:19 - Mapped "{[/appinfo/beans || /appinfo/beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-03-10 10:49:19 - Mapped "{[/appinfo/auditevents || /appinfo/auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/appinfo/health || /appinfo/health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)
+2018-03-10 10:49:19 - Mapped "{[/appinfo/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+2018-03-10 10:49:19 - Mapped "{[/appinfo/env || /appinfo/env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-03-10 10:49:21 - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@161c4fc2, org.springframework.security.web.context.SecurityContextPersistenceFilter@52c8e312, org.springframework.security.web.header.HeaderWriterFilter@70ba1398, org.springframework.security.web.authentication.logout.LogoutFilter@6d80a121, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@70bae664, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4a8df212, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@66b10727, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@298b0fa0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a8c832, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2aba7f42, org.springframework.security.web.session.SessionManagementFilter@3362c2b9, org.springframework.security.web.access.ExceptionTranslationFilter@7c2d4983, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@12c86508]
+2018-03-10 10:49:21 - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-03-10 10:49:21 - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-03-10 10:49:21 - Mapped URL path [/appinfo/docs/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-03-10 10:49:21 - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-03-10 10:49:21 - Creating filter chain: Ant [pattern='/appinfo/**'], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@50da0a9f, org.springframework.security.web.context.SecurityContextPersistenceFilter@f7780c3, org.springframework.security.web.header.HeaderWriterFilter@1a924e72, org.springframework.web.filter.CorsFilter@38b31c74, org.springframework.security.web.authentication.logout.LogoutFilter@1708785b, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6f48f2b8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44e8b6dd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4c8191ec, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@9dda63a, org.springframework.security.web.session.SessionManagementFilter@4f029a15, org.springframework.security.web.access.ExceptionTranslationFilter@2c8ceb03, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@76c4d34e]
+2018-03-10 10:49:22 - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@61919a18: startup date [Sat Mar 10 10:48:16 CET 2018]; root of context hierarchy
+2018-03-10 10:49:22 - Detected ResponseBodyAdvice bean in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2018-03-10 10:49:22 - Detected ResponseBodyAdvice implementation in org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration$ActuatorEndpointLinksAdvice
+2018-03-10 10:49:23 - LiveReload server is running on port 35729
+2018-03-10 10:49:24 - Registering beans for JMX exposure on startup
+2018-03-10 10:49:24 - Registering beans for JMX exposure on startup
+2018-03-10 10:49:24 - Starting beans in phase 0
+2018-03-10 10:49:24 - Located managed bean 'auditEventsEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=auditEventsEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'requestMappingEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=requestMappingEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'environmentEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=environmentEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'healthEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=healthEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'beansEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=beansEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'infoEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=infoEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'loggersEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=loggersEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'metricsEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=metricsEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'traceEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=traceEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'dumpEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=dumpEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'autoConfigurationReportEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=autoConfigurationReportEndpoint]
+2018-03-10 10:49:24 - Located managed bean 'configurationPropertiesReportEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=configurationPropertiesReportEndpoint]
+2018-03-10 10:49:24 - Starting beans in phase 2147483647
+2018-03-10 10:49:24 - Context refreshed
+2018-03-10 10:49:24 - Found 1 custom documentation plugin(s)
+2018-03-10 10:49:24 - Scanning for api listing references
+2018-03-10 10:49:24 - Generating unique operation named: addEntitiesFromCSVUsingPOST_1
+2018-03-10 10:49:24 - Generating unique operation named: getDocumentsUsingGET_1
+2018-03-10 10:49:24 - Generating unique operation named: getDocumentsUsingGET_2
+2018-03-10 10:49:24 - Generating unique operation named: getImportListFromCSVUsingGET_1
+2018-03-10 10:49:24 - Generating unique operation named: addUsingGET_1
+2018-03-10 10:49:24 - Generating unique operation named: addUsingPOST_1
+2018-03-10 10:49:24 - Generating unique operation named: addEntitiesFromCSVUsingPOST_2
+2018-03-10 10:49:24 - Generating unique operation named: exportDBtoFileUsingPOST_1
+2018-03-10 10:49:24 - Generating unique operation named: getImportListFromCSVUsingGET_2
+2018-03-10 10:49:25 - Generating unique operation named: addEntitiesFromCSVUsingPOST_3
+2018-03-10 10:49:25 - Generating unique operation named: exportDBtoFileUsingGET_1
+2018-03-10 10:49:25 - Generating unique operation named: getAdditionalSearchRequestUsingGET_1
+2018-03-10 10:49:25 - Generating unique operation named: getImportListFromCSVUsingGET_3
+2018-03-10 10:49:25 - Generating unique operation named: getUserUsingGET_1
+2018-03-10 10:49:25 - Generating unique operation named: getUserUsingGET_2
+2018-03-10 10:49:25 - Initializing ProtocolHandler ["http-nio-8080"]
+2018-03-10 10:49:25 - Starting ProtocolHandler ["http-nio-8080"]
+2018-03-10 10:49:25 - Using a shared selector for servlet write/read
+2018-03-10 10:49:25 - Tomcat started on port(s): 8080 (http)
+2018-03-10 10:49:25 - Started ProjectCrMbyMwaApplication in 70.854 seconds (JVM running for 72.865)
+2018-03-10 17:22:17 - Application shutdown requested.
+2018-03-10 17:22:17 - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@61919a18: startup date [Sat Mar 10 10:48:16 CET 2018]; root of context hierarchy
+2018-03-10 17:22:17 - Stopping beans in phase 2147483647
+2018-03-10 17:22:17 - Stopping beans in phase 0
+2018-03-10 17:22:17 - Unregistering JMX-exposed beans on shutdown
+2018-03-10 17:22:17 - Unregistering JMX-exposed beans
+2018-03-10 17:22:17 - Unregistering JMX-exposed beans on shutdown
+2018-03-10 17:22:17 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-03-10 17:22:17 - HHH000227: Running hbm2ddl schema export
+2018-03-10 17:22:21 - HHH000230: Schema export complete
