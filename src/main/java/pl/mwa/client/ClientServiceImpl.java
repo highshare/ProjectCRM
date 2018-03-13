@@ -2,17 +2,22 @@ package pl.mwa.client;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pl.mwa.address.AddressRepository;
 import pl.mwa.representative.Representative;
 import pl.mwa.util.CSVUtils;
 
 @Service
 public class ClientServiceImpl implements ClientService {
 
-	@Autowired
+	
 	ClientRepository cr;
+	
+	@Autowired
+	AddressRepository ar;
 	
 	
 	public ClientServiceImpl(ClientRepository cr) {
@@ -41,18 +46,52 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public void save(Client client) {
+		client.setActive(true);
+		if (client.getAddress() != null) {
+			ar.save(client.getAddress());
+		}
 		cr.save(client);
-
 	}
 
+	public void update(Client client) {
+		if (client != null) {
+			Client oldclient = cr.findOne(client.getId());
+			if (client.getName() == null) client.setName(oldclient.getName());
+			if (client.getAbbr() == null) client.setAbbr(oldclient.getAbbr());
+			if (client.getAddress() == null) client.setAddress(oldclient.getAddress());
+			if (client.getActive() == null) client.setActive(oldclient.getActive());
+			if (client.getIndustry() == null) client.setIndustry(oldclient.getIndustry());
+			if (client.getRepresentatives() == null) client.setRepresentatives(oldclient.getRepresentatives());
+			if (client.getResponsible() == null) client.setResponsible(oldclient.getResponsible());
+			cr.save(client);
+		}
+	}
 
 	public Client findOne(Long id) {
-		return cr.findOne(id);
+		return jsonNullReference(cr.findOne(id));
 	}
 
+	Client jsonNullReference(Client client) {
+		if (client != null) {
+			for (Representative r : client.getRepresentatives()) {
+				r.setClient(null);
+			}
+			if (client.getAddress() != null)
+				client.getAddress().setClient(null);
+		}
+		return client;
+	}
 
+	List<Client> jsonListNullReference(List<Client> list) {
+		for (Client client : list) {
+			client = jsonNullReference(client);
+		}
+		return list;
+	}
+	
+	
 	public List<Client> findAll() {
-		return cr.findAll();
+		return jsonListNullReference(cr.findAll());
 	}
 
 	public void saveToDB(List<Client> clients) {

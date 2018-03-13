@@ -63,7 +63,7 @@ public class ClientResource {
     
     @PutMapping
     ResponseEntity updateClient(@Valid @RequestBody Client client){
-    	cs.save(client);
+    	cs.update(client);
         return ResponseEntity.accepted().build();
     }
     

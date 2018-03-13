@@ -2,13 +2,13 @@ package pl.mwa.client;
 
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -29,7 +29,7 @@ import pl.mwa.user.User;
 @Builder
 @Data
 @Entity
-@Table(name="clients")
+@Table(name = "clients")
 public class Client {
 	
 	@Id
@@ -49,10 +49,13 @@ public class Client {
 	@ManyToOne
 	private User responsible;
 	
-	@OneToMany
+	
+	@OneToMany(mappedBy = "client")
 	private Collection<Representative> representatives;
 	
-	@OneToOne(mappedBy="client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "address_id")
 	private Address address;
 	
 	

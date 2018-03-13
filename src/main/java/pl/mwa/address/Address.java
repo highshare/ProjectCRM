@@ -1,5 +1,6 @@
 package pl.mwa.address;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,12 +29,12 @@ import pl.mwa.client.Client;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="addresses")
+@Table(name = "addresses")
 public class Address {
 
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String street;
@@ -47,8 +50,8 @@ public class Address {
 	@Column(nullable = false)
 	private String city;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="client_id")
+	
+	@OneToOne(mappedBy = "address", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
 	private Client client;
 	
 	

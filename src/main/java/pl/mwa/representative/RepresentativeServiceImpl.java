@@ -52,9 +52,14 @@ public class RepresentativeServiceImpl implements RepresentativeService {
 	
 	@Override
 	public void save(Representative representative) {
+		representative.setActive(true);
 		rr.save(representative);
 	}
 
+	
+	public void update(Representative representative) {
+		rr.save(representative);
+	}
 
 	@Override
 	public Collection<Representative> findAllByActiveTrue() {

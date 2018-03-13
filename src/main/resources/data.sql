@@ -12,7 +12,6 @@ insert into users values(8, 1, '2018-03-09 15:19:07', 'ewelina.malinowska@compan
 insert into users values(9, 1, '2018-03-09 15:21:40', 'anna.krajewska@company.com', 'Anna', 'Krajewska', '$2a$10$KbJ.8NtnZaGKwRuf6IaTcOSweI225ef0QaE7PkMS0uIYh3IuyNEhe', '601-859-320', 0, 'annkraj');
 insert into users values(10, 1, '2018-03-09 15:23:27', 'agata.kubiak@company.com', 'Agata', 'Kubiak', '$2a$10$M9Dxp6YAt9kfNREIlckJieMJuXNDKwO/BG0PBzsVyGUal7/WBDYNm', '510-610-355', 1, 'agakub');
 
-
 insert into users_roles values(2, 1);
 insert into users_roles values(3, 1);
 insert into users_roles values(4, 1);
@@ -25,7 +24,6 @@ insert into users_roles values(8, 1);
 insert into users_roles values(9, 1);
 insert into users_roles values(10, 1);
 
-
 insert into teams values(1, 'Sales Team', 4);
 insert into teams values(2, 'Support Team', 10);
 
@@ -35,5 +33,28 @@ insert into teams_members values(1, 6);
 insert into teams_members values(2, 7);
 insert into teams_members values(2, 8);
 insert into teams_members values(2, 9);
+
+insert into addresses values('1', 'lok. 221', 'Warszawa', '00-140', 'Al. Jerozolimskie', '127');
+insert into addresses values('2', 'pawilon A', 'Warszawa', '01-201', 'Pulawska', '155');
+insert into addresses values('3', 'blok H', 'Warszawa', '04-345', '11 Listopada', '34');
+insert into addresses values('4', 'lok.30', 'Katowice', '32-405', 'Wysoka', '134');
+
+insert into clients values('1', 'CODEXO', 1, '0', 'CODEXO Technology', '1', 2);
+insert into clients values('2', 'XETEL', 1, '1', 'XETEL Communication', '2', 3);
+insert into clients values('3', 'FUTURO', 1, '8', 'FUTURO SA', '3', NULL);
+insert into clients values('4', 'LIMBO', 1, '7', 'LIMBO Sp. z o.o.', '4', NULL);
+
+insert into representatives values('1', 1, 'andrzej.wozniak@codexo.com', 'Andrzej', 'Wozniak', '500-134-201', 'Sales Manager', '1');
+insert into representatives values('2', 1, 'dominika.sawicka@xetel.com', 'Dominika', 'Sawicka', '602-510-130', 'KAM', '2');
+insert into representatives values('3', 1, 'jan.puchalski@futuro.pl', 'Jan', 'Puchalski', '730-012-012', 'Dyrektor Sprzedazy', '3');
+
+
+
+
+
+
+
+
+
 
 
