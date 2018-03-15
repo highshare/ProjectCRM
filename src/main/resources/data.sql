@@ -37,19 +37,35 @@ insert into teams_members values(2, 9);
 insert into addresses values('1', 'lok. 221', 'Warszawa', '00-140', 'Al. Jerozolimskie', '127');
 insert into addresses values('2', 'pawilon A', 'Warszawa', '01-201', 'Pulawska', '155');
 insert into addresses values('3', 'blok H', 'Warszawa', '04-345', '11 Listopada', '34');
-insert into addresses values('4', 'lok.30', 'Katowice', '32-405', 'Wysoka', '134');
+insert into addresses values('4', 'lok.30', 'Katowice', '34-405', 'Wysoka', '134');
+insert into addresses values('5', '', 'Łódź', '95-005', 'Piotrkowska', '26');
+insert into addresses values('6', '', 'Ruda Śląska', '35-200', 'Wydobywcza', '3');
+insert into addresses values('7', '', 'Radom', '20-200', 'Wschodnia', '1');
+insert into addresses values('8', '', 'Kraków', '32-100', 'Złota', '12');
+insert into addresses values('9', 'paw. 10', 'Warszawa', '02-450', 'Barnicza', '7');
+insert into addresses values('10', '', 'Gdańsk', '68-120', 'Nadbrzeżna', '2');
 
 insert into clients values('1', 'CODEXO', 1, '0', 'CODEXO Technology', '1', 2);
 insert into clients values('2', 'XETEL', 1, '1', 'XETEL Communication', '2', 3);
 insert into clients values('3', 'FUTURO', 1, '8', 'FUTURO SA', '3', NULL);
 insert into clients values('4', 'LIMBO', 1, '7', 'LIMBO Sp. z o.o.', '4', NULL);
+insert into clients values('5', 'TOYSLEGO', 1, '8', 'TOYSLEGO Sp. z o.o.', '5', NULL);
+insert into clients values('6', 'PROFILE', 1, '7', 'PROFILE SA', '6', NULL);
+insert into clients values('7', 'BGR', 1, '3', 'Bank Gospodarstwa Regionalnego SA', '7', NULL);
+insert into clients values('8', 'MBK', 1, '3', 'Małopolski Bank Kredytowy SA', '8', NULL);
+insert into clients values('9', 'BTRF', 1, '3', 'Bank Twojej Rezerwy Federalnej', '9', NULL);
+insert into clients values('10', 'FISHERGOLD', 1, '8', 'FISHERGOLD SA', '10', NULL);
 
 insert into representatives values('1', 1, 'andrzej.wozniak@codexo.com', 'Andrzej', 'Wozniak', '500-134-201', 'Sales Manager', '1');
 insert into representatives values('2', 1, 'dominika.sawicka@xetel.com', 'Dominika', 'Sawicka', '602-510-130', 'KAM', '2');
 insert into representatives values('3', 1, 'jan.puchalski@futuro.pl', 'Jan', 'Puchalski', '730-012-012', 'Dyrektor Sprzedazy', '3');
-
-
-
+insert into representatives values('4', 1, 'edyta.michalska@limbo.com.pl', 'Edyta', 'Michalska', '603-603-030', 'Partner', '4');
+insert into representatives values('5', 1, 's.wojciechowski@toyslego.com', 'Szymon', 'Wojciechowski', '607-360-760', 'Dyrektor Handlowy', '5');
+insert into representatives values('6', 1, 'zygmund.nadolny@profile.pl', 'Zygmund', 'Nadolny', '515-030-012', 'KAM', '6');
+insert into representatives values('7', 1, 'angelika.hoit@bgr.com.pl', 'Angelika', 'Hoit', '22-630-12-20', 'Dyrektor Marketingu', '7');
+insert into representatives values('8', 1, 'renata.cybulska@mbkbank.pl', 'Renata', 'Cybulska', '32-250-30-40', 'Dyrektor Sprzedazy', '8');
+insert into representatives values('9', 1, 'jerzy.mendrek@bankrezerwy.pl', 'Jerzy', 'Mendrek', '620-750-750', 'Partner', '9');
+insert into representatives values('10', 1, 'h.goldfish@fishergold.pl', 'Hannah', 'Goldfish', '510-099-099', 'Owner', '10');
 
 
 

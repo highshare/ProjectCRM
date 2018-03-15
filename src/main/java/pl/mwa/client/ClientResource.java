@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import pl.mwa.representative.Representative;
-import pl.mwa.representative.RepresentativeServiceImpl;
 import pl.mwa.util.CSVUtils;
 
 
@@ -47,6 +45,27 @@ public class ClientResource {
         return ResponseEntity.ok(cs.findAll());
     }
 
+    @GetMapping("/industry/{industry}")
+    ResponseEntity getClients(@PathVariable Industry industry) {
+    	return ResponseEntity.ok(cs.findByIndustry(industry));
+    }
+    
+    @GetMapping("/responsible/{id}")
+    ResponseEntity getClients(@PathVariable Long id) {
+    	return ResponseEntity.ok(cs.findByResponsibleId(id));
+    }
+    
+    @GetMapping("/responsible")
+    ResponseEntity getClients(@RequestParam String lastname) {
+    	return ResponseEntity.ok(cs.findByResponsibleLastname(lastname));
+    }
+    
+    
+    @GetMapping("/address-search")
+    ResponseEntity getClientsByAddress(@RequestParam("city") String city) {
+    	return ResponseEntity.ok(cs.findByAddressCityIgnoreCase(city));
+    }
+    
     @PostMapping
     ResponseEntity createClient(@Valid @RequestBody Client client){
         cs.save(client);

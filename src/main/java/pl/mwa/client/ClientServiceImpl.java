@@ -114,5 +114,41 @@ public class ClientServiceImpl implements ClientService {
 		return cr.findAll();
 	}
 
+
+	@Override
+	public List<Client> findByIndustry(Industry industry) {
+		return jsonListNullReference(cr.findByIndustry(industry));
+	}
+
+
+	@Override
+	public List<Client> findByResponsibleId(Long id) {
+		return jsonListNullReference(cr.findByResponsibleId(id));
+	}
+
+
+	@Override
+	public List<Client> findByResponsibleLastname(String lastname) {
+		return jsonListNullReference(cr.findByResponsibleLastname(lastname));
+	}
+
+
+	@Override
+	public List<Client> findByActiveTrue() {
+		return jsonListNullReference(cr.findByActiveTrue());
+	}
+
+
+	@Override
+	public List<Client> findByActiveFalse() {
+		return jsonListNullReference(cr.findByActiveFalse());
+	}
+
+
+	@Override
+	public List<Client> findByAddressCityIgnoreCase(String city) {
+		return jsonListNullReference(cr.findByAddressCityIgnoreCase(city));
+	}
+
 	
 }
