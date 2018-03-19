@@ -1,6 +1,7 @@
 package pl.mwa.client;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -8,9 +9,11 @@ import pl.mwa.representative.Representative;
 
 public interface ClientRepository extends JpaRepository<Client, Long>{
 
-	Client findByRepresentatives(Representative representative);
+	Optional<Client> findByRepresentatives(Representative representative);
 	
-	Client findByName(String name);
+	Optional<Client> findByName(String name);
+	
+	Optional<Client> findById(long id);
 	
 	List<Client> findByIndustry(Industry industry);
 	

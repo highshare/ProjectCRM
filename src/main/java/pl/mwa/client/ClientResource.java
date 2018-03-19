@@ -21,68 +21,70 @@ import pl.mwa.util.CSVUtils;
 @RestController
 public class ClientResource {
 	
-	@Autowired
-	ClientServiceImpl cs;
+/*	@Autowired
+	ClientServiceImpl cs;*/
+	
+/*	@Autowired
+	ClientRepository cr;*/
+	
 	
 	@Autowired
-	ClientRepository cr;
-	
+	ClientService service;
 
-	public ClientResource(ClientServiceImpl cs) {
+/*	public ClientResource(ClientServiceImpl cs) {
 		this.cs = cs;
-	}
+	}*/
 	
 	
 	 @GetMapping("/{id}")
 	 ResponseEntity getClient(@PathVariable Long id){
-	        Client client = cs.findOne(id);
-	        return ResponseEntity.ok(client);
+	        ClientDto clientDto = service.findOne(id);
+	        return ResponseEntity.ok(clientDto);
 	}
 	
 	
     @GetMapping
     ResponseEntity getClients(){
-        return ResponseEntity.ok(cs.findAll());
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/industry/{industry}")
     ResponseEntity getClients(@PathVariable Industry industry) {
-    	return ResponseEntity.ok(cs.findByIndustry(industry));
+    	return ResponseEntity.ok(service.findByIndustry(industry));
     }
     
     @GetMapping("/responsible/{id}")
     ResponseEntity getClients(@PathVariable Long id) {
-    	return ResponseEntity.ok(cs.findByResponsibleId(id));
+    	return ResponseEntity.ok(service.findByResponsibleId(id));
     }
     
     @GetMapping("/responsible")
     ResponseEntity getClients(@RequestParam String lastname) {
-    	return ResponseEntity.ok(cs.findByResponsibleLastname(lastname));
+    	return ResponseEntity.ok(service.findByResponsibleLastname(lastname));
     }
     
     
     @GetMapping("/address-search")
     ResponseEntity getClientsByAddress(@RequestParam("city") String city) {
-    	return ResponseEntity.ok(cs.findByAddressCityIgnoreCase(city));
+    	return ResponseEntity.ok(service.findByAddressCityIgnoreCase(city));
     }
     
     @PostMapping
-    ResponseEntity createClient(@Valid @RequestBody Client client){
-        cs.save(client);
-        return ResponseEntity.ok(client.getId());
+    ResponseEntity createClient(@Valid @RequestBody CreateClientDto dto){
+        return ResponseEntity.ok(service.createClient(dto));
     }
     
     
     @DeleteMapping("/{id}")
     ResponseEntity deleteClient(@PathVariable Long id){
-    	cs.remove(id);
+    	service.remove(id);
         return ResponseEntity.accepted().build();
     }
     
     
     @PutMapping
-    ResponseEntity updateClient(@Valid @RequestBody Client client){
-    	cs.update(client);
+    ResponseEntity updateClient(@Valid @RequestBody ClientDto dto){
+    	service.update(dto);
         return ResponseEntity.accepted().build();
     }
     
@@ -93,13 +95,13 @@ public class ClientResource {
 	
 	@PostMapping("/import")
 	ResponseEntity addEntitiesFromCSV(@RequestParam(name = "filename", required = true) String filename) {
-		new ClientServiceImpl(cr).importDataFromCSV(filename);
+		service.importDataFromCSV(filename);
 		return ResponseEntity.accepted().build();
 	}
 	
 	@PostMapping("/export")
 	ResponseEntity exportDBtoFile(@RequestParam(name = "filename", required = true) String filename) {
-		new ClientServiceImpl(cr).exportDataToCSV(filename);
+		service.exportDataToCSV(filename);
 		return ResponseEntity.accepted().build();
 	}
     
