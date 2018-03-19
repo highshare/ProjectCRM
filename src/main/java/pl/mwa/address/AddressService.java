@@ -1,6 +1,5 @@
 package pl.mwa.address;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import pl.mwa.client.Client;
 import pl.mwa.exception.ModelNotFound;
+import pl.mwa.util.CSVUtils;
 import pl.mwa.util.EntityUtils;
 
 @Service
@@ -29,14 +29,14 @@ public class AddressService {
 	}
 
 	AddressDto getAddress(long id) {
-		return repository.findById(id).map(AddressMapper::toDto)
-				.orElseThrow(() -> new ModelNotFound("Address", id));
+		return jsonNullReference(repository.findById(id).map(AddressMapper::toDto)
+				.orElseThrow(() -> new ModelNotFound("Address", id)));
 	}
 
 	List<AddressDto> getAddresses() {
-		return StreamSupport.stream(repository.findAll().spliterator(), false)
+		return jsonListNullReference(StreamSupport.stream(repository.findAll().spliterator(), false)
 				.map(AddressMapper::toDto)
-				.collect(Collectors.toList());
+				.collect(Collectors.toList()));
 	}
 
 	void deleteAddress(long id) {
@@ -53,26 +53,34 @@ public class AddressService {
 		EntityUtils.setter(addressDto.getPostalCode(), t -> address.setPostalCode(t));
 		EntityUtils.setter(addressDto.getClient(), t -> address.setClient(t));
 		EntityUtils.setter(addressDto.getCity(), t -> address.setCity(t));
+		EntityUtils.setter(addressDto.getCountry(), t -> address.setCountry(t));
 		repository.save(address);
 	}
 
 	List<AddressDto> getAddressesSearch(String street, String streetNumber, String additionalNumber, String postalCode,
-			String city, Client client) {
+			String city, String country, Client client) {
 		List<AddressDto> dtos = StreamSupport.stream(repository.findAll().spliterator(), false)
 				.map(AddressMapper::toDto).collect(Collectors.toList());
-		return null;
+		return jsonListNullReference(filter(dtos, street, streetNumber, additionalNumber, postalCode, city, country, client));
 	}
 
 	private static List<AddressDto> filter(List<AddressDto> dtos, String street, String streetNumber,
-			String additionalNumber, String postalCode, String city, Client client) {
-		return dtos.stream().filter(addFilter(street, addressDto -> street.equalsIgnoreCase(addressDto.getStreet())))
+			String additionalNumber, String postalCode, String city, String country, Client client) {
+		return dtos.stream()
+				.filter(addFilter(street, 
+						addressDto -> addressDto.getStreet().toLowerCase().contains(street.toLowerCase())))
 				.filter(addFilter(streetNumber,
-						addressDto -> streetNumber.equalsIgnoreCase(addressDto.getStreetNumber())))
+						addressDto -> addressDto.getStreetNumber().contains(streetNumber.toLowerCase())))
 				.filter(addFilter(additionalNumber,
-						addressDto -> additionalNumber.equalsIgnoreCase(addressDto.getAdditionalNumber())))
-				.filter(addFilter(postalCode, addressDto -> postalCode.equalsIgnoreCase(addressDto.getPostalCode())))
-				.filter(addFilter(city, addressDto -> city.equalsIgnoreCase(addressDto.getCity())))
-				.filter(addFilter(client, addressDto -> client.equals(addressDto.getClient())))
+						addressDto -> addressDto.getAdditionalNumber().contains(additionalNumber.toLowerCase())))
+				.filter(addFilter(postalCode, 
+						addressDto -> addressDto.getPostalCode().contains(postalCode)))
+				.filter(addFilter(city, 
+						addressDto -> addressDto.getCity().toLowerCase().contains(city.toLowerCase())))
+				.filter(addFilter(country, 
+						addressDto -> addressDto.getCountry().toLowerCase().contains(country.toLowerCase())))
+				.filter(addFilter(client, 
+						addressDto -> client.equals(addressDto.getClient())))
 				.collect(Collectors.toList());
 	}
 
@@ -83,4 +91,33 @@ public class AddressService {
 		return AddressDto -> true;
 	}
 
+	AddressDto jsonNullReference(AddressDto addressDto) {
+		if (addressDto != null) {
+			if (addressDto.getClient() != null) {
+				addressDto.getClient().setAddress(null);
+				addressDto.getClient().setRepresentatives(null);;
+				addressDto.getClient().setResponsible(null);
+			}
+		}
+		return addressDto;
+	}
+	
+	List<AddressDto> jsonListNullReference(List<AddressDto> addresses){
+		for (AddressDto addressDto: addresses) {
+			addressDto = jsonNullReference(addressDto);
+		}
+		return addresses;
+	}
+	
+	
+	void exportDataToCSV(String filename) {
+		List<Address> addresses = repository.findAll();
+		for (Address address: addresses) {
+			address.setClient(null);
+		}
+		CSVUtils.exportListToCSV(filename, addresses);
+	}
+	
+	
+	
 }

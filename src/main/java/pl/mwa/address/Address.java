@@ -50,6 +50,8 @@ public class Address {
 	@Column(nullable = false)
 	private String city;
 	
+	@Column
+	private String country;
 	
 	@OneToOne(mappedBy = "address", cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
 	private Client client;

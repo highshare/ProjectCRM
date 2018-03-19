@@ -34,16 +34,26 @@ insert into teams_members values(2, 7);
 insert into teams_members values(2, 8);
 insert into teams_members values(2, 9);
 
-insert into addresses values('1', 'lok. 221', 'Warszawa', '00-140', 'Al. Jerozolimskie', '127');
-insert into addresses values('2', 'pawilon A', 'Warszawa', '01-201', 'Pulawska', '155');
-insert into addresses values('3', 'blok H', 'Warszawa', '04-345', '11 Listopada', '34');
-insert into addresses values('4', 'lok.30', 'Katowice', '34-405', 'Wysoka', '134');
-insert into addresses values('5', '', 'Łódź', '95-005', 'Piotrkowska', '26');
-insert into addresses values('6', '', 'Ruda Śląska', '35-200', 'Wydobywcza', '3');
-insert into addresses values('7', '', 'Radom', '20-200', 'Wschodnia', '1');
-insert into addresses values('8', '', 'Kraków', '32-100', 'Złota', '12');
-insert into addresses values('9', 'paw. 10', 'Warszawa', '02-450', 'Barnicza', '7');
-insert into addresses values('10', '', 'Gdańsk', '68-120', 'Nadbrzeżna', '2');
+insert into addresses values('1', 'lok. 221', 'Warszawa', 'Polska', '00-140', 'Al. Jerozolimskie', '127');
+insert into addresses values('2', 'pawilon A', 'Warszawa', 'Polska', '01-201', 'Pulawska', '155');
+insert into addresses values('3', 'blok H', 'Warszawa', 'Polska', '04-345', '11 Listopada', '34');
+insert into addresses values('4', 'lok.30', 'Katowice', 'Polska', '34-405', 'Wysoka', '134');
+insert into addresses values('5', '', 'Łódź', 'Polska', '95-005', 'Piotrkowska', '26');
+insert into addresses values('6', '', 'Ruda Śląska', 'Polska', '35-200', 'Wydobywcza', '3');
+insert into addresses values('7', '', 'Radom', 'Polska', '20-200', 'Wschodnia', '1');
+insert into addresses values('8', '', 'Kraków', 'Polska', '32-100', 'Złota', '12');
+insert into addresses values('9', 'paw. 10', 'Warszawa', 'Polska', '02-450', 'Barnicza', '7');
+insert into addresses values('10', '', 'Gdańsk', 'Polska', '80-120', 'Nadbrzeżna', '2');
+insert into addresses values('11', '', 'Płock', 'Polska', '09-411', 'Chemików', '7');
+insert into addresses values('12', '', 'Gdańsk', 'Polska', '80-718', 'Elbląska', '135');
+insert into addresses values('13', '', 'Warszawa', 'Polska', '01-224', 'Kasprzaka', '25');
+insert into addresses values('14', '', 'Warszawa', 'Polska', '00-496', 'Mysia', '2');
+insert into addresses values('15', '', 'Warszawa', 'Polska', '00-133', 'al. Jana Pawła II ', '24');
+insert into addresses values('16', '', 'Warszawa', 'Polska', '00-120', 'Długa', '2');
+insert into addresses values('17', '', 'Szczecin', 'Polska', '70-120', 'Prosta', '12');
+insert into addresses values('18', '', 'Poznań', 'Polska', '60-120', 'Krzywa', '5');
+insert into addresses values('19', '', 'Kielce', 'Polska', '56-120', 'Krótka', '30');
+insert into addresses values('20', '', 'Wrocław', 'Polska', '48-120', 'Ciasna', '1');
 
 insert into clients values('1', 'CODEXO', 1, '0', 'CODEXO Technology', '1', 2);
 insert into clients values('2', 'XETEL', 1, '1', 'XETEL Communication', '2', 3);
@@ -55,8 +65,19 @@ insert into clients values('7', 'BGR', 1, '3', 'Bank Gospodarstwa Regionalnego S
 insert into clients values('8', 'MBK', 1, '3', 'Małopolski Bank Kredytowy SA', '8', NULL);
 insert into clients values('9', 'BTRF', 1, '3', 'Bank Twojej Rezerwy Federalnej', '9', NULL);
 insert into clients values('10', 'FISHERGOLD', 1, '8', 'FISHERGOLD SA', '10', NULL);
+insert into clients values('11', 'ORLEN', 1, '7', 'Polski Koncern Naftowy ORLEN SA', '11', NULL);
+insert into clients values('12', 'LOTOS', 1, '7', 'Grupa LOTOS SA', '12', NULL);
+insert into clients values('13', 'PGNiG', 1, '7', 'Polskie Górnictwo Naftowe i Gazownictwo SA', '13', NULL);
+insert into clients values('14', 'PGE', 1, '8', 'Polska Grupa Energetyczna SA', '14', NULL);
+insert into clients values('15', 'PZU', 1, '5', 'Powszechny Zakład Ubezpieczeń SA', '15', NULL);
+insert into clients values('16', 'Dobra firma1', 1, '10', 'Dobra firma1', '16', NULL);
+insert into clients values('17', 'Dobra firma2', 1, '10', 'Dobra firma2', '17', NULL);
+insert into clients values('18', 'Dobra firma3', 1, '10', 'Dobra firma3', '18', NULL);
+insert into clients values('19', 'Dobra firma4', 1, '10', 'Dobra firma4', '19', NULL);
+insert into clients values('20', 'Dobra firma5', 1, '10', 'Dobra firma5', '20', NULL);
 
-insert into representatives values('1', 1, 'andrzej.wozniak@codexo.com', 'Andrzej', 'Wozniak', '500-134-201', 'Sales Manager', '1');
+
+insert into representatives values('1', 1, 'alicja.izdebska@codexo.com', 'Alicja', 'Izdebska', '500-134-202', 'Sales Director', '1');
 insert into representatives values('2', 1, 'dominika.sawicka@xetel.com', 'Dominika', 'Sawicka', '602-510-130', 'KAM', '2');
 insert into representatives values('3', 1, 'jan.puchalski@futuro.pl', 'Jan', 'Puchalski', '730-012-012', 'Dyrektor Sprzedazy', '3');
 insert into representatives values('4', 1, 'edyta.michalska@limbo.com.pl', 'Edyta', 'Michalska', '603-603-030', 'Partner', '4');
@@ -66,6 +87,23 @@ insert into representatives values('7', 1, 'angelika.hoit@bgr.com.pl', 'Angelika
 insert into representatives values('8', 1, 'renata.cybulska@mbkbank.pl', 'Renata', 'Cybulska', '32-250-30-40', 'Dyrektor Sprzedazy', '8');
 insert into representatives values('9', 1, 'jerzy.mendrek@bankrezerwy.pl', 'Jerzy', 'Mendrek', '620-750-750', 'Partner', '9');
 insert into representatives values('10', 1, 'h.goldfish@fishergold.pl', 'Hannah', 'Goldfish', '510-099-099', 'Owner', '10');
+
+insert into representatives values('11', 1, 'andrzej.wozniak@codexo.com', 'Andrzej', 'Wozniak', '500-134-201', 'Sales Manager', '1');
+insert into representatives values('12', 1, 'mikolaj.stanicki@xetel.com', 'Mikołaj', 'Stanicki', '602-510-230', 'KAM', '2');
+insert into representatives values('13', 1, 'tomasz.ryski@futuro.pl', 'Tomasz', 'Ryski', '730-012-011', 'Menedżer Sprzedazy', '3');
+insert into representatives values('14', 1, 'edyta.zdanowska@limbo.com.pl', 'Edyta', 'Zdanowska', '603-603-035', 'Specjalista ds. Zakupów', '4');
+insert into representatives values('15', 1, 'l.bones@toyslego.com', 'Lena', 'Bones', '607-360-761', 'Przedstawiciel Handlowy', '5');
+insert into representatives values('16', 1, 'stanislaw.gorny@profile.pl', 'Stanisław', 'Górny', '500-350-620', 'Dyrektor Handlowy', '6');
+insert into representatives values('17', 1, 'barbara.luft@bgr.com.pl', 'Barbara', 'Luft', '22-630-15-61', 'Dyrektor Handlowy', '7');
+insert into representatives values('18', 1, 'robert.szybki@mbkbank.pl', 'Robert', 'Szybki', '32-250-30-50', 'Dyrektor ds. Zakupów', '8');
+insert into representatives values('19', 1, 'anna.lasek@bankrezerwy.pl', 'Anna', 'Lasek', '620-750-753', 'Partner', '9');
+insert into representatives values('20', 1, 'n.goldfish@fishergold.pl', 'Norbert', 'Goldfish', '510-099-990', 'Owner', '10');
+
+insert into representatives values('21', 1, 'krzysztof.golawski@orlen.pl', 'Krzysztof', 'Golawski', '510-810-005', 'Dyrektor Handlowy', '11');
+insert into representatives values('22', 1, 'irena.szewicka@lotos.pl', 'Irena', 'Szewicka', '602-400-302', 'Dyrektor Handlowy', '12');
+insert into representatives values('23', 1, 'dariusz.robkiewicz@pgnig.pl', 'Dariusz', 'Robkiewicz', '724-131-313', 'Dyrektor ds. Zakupów', '13');
+insert into representatives values('24', 1, 'joanna.drzewicka@pge.pl', 'Joanna', 'Drzewicka', '530-601-601', 'Dyrektor Handlowy', '14');
+insert into representatives values('25', 1, 'justyna.abramowicz@pzu.pl', 'Justyna', 'Abramowicz', '540-100-035', 'Przedstawiciel Handlowy', '15');
 
 
 

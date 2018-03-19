@@ -2,7 +2,6 @@ package pl.mwa.client;
 
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -107,6 +106,12 @@ public class ClientServiceImpl implements ClientService {
 	
 	public void exportDataToCSV(String filename) {
 		List<Client> clients = buildListFromDB();
+		for (Client client: clients) {
+			client.setAddress(null);
+			client.setRepresentatives(null);
+			client.setResponsible(null);
+		}
+		
 		CSVUtils.exportListToCSV(filename, clients);
 	}
 	

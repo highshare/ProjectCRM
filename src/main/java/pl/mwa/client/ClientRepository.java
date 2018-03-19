@@ -8,9 +8,9 @@ import pl.mwa.representative.Representative;
 
 public interface ClientRepository extends JpaRepository<Client, Long>{
 
-	public Client findByRepresentatives(Representative representative);
+	Client findByRepresentatives(Representative representative);
 	
-	public Client findByName(String name);
+	Client findByName(String name);
 	
 	List<Client> findByIndustry(Industry industry);
 	

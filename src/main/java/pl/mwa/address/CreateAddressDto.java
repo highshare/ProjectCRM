@@ -28,5 +28,5 @@ public class CreateAddressDto {
 	
 	private String city;
 	
-	
+	private String country;
 }

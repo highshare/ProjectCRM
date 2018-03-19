@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
@@ -40,7 +41,10 @@ public class CSVUtils {
 		Path fullPath = Paths.get(System.getProperty("user.home"),"Documents", filename);
 		try {
 			List beans = new CsvToBeanBuilder(new FileReader(fullPath.toString()))
-					.withThrowExceptions(true).withType(aClass).build().parse();
+					.withThrowExceptions(true).withType(aClass)
+					.withIgnoreLeadingWhiteSpace(true)
+					.withQuoteChar(CSVWriter.NO_QUOTE_CHARACTER)
+					.build().parse();
 			return beans;
 		} catch (IllegalStateException | FileNotFoundException e) {
 			e.printStackTrace();
@@ -53,7 +57,8 @@ public class CSVUtils {
 		Path fullPath = Paths.get(System.getProperty("user.home"),"Documents", filename);
 		try {
 			Writer writer = new FileWriter(fullPath.toString());
-	        StatefulBeanToCsvBuilder beanToCsv = new StatefulBeanToCsvBuilder(writer);
+	        StatefulBeanToCsvBuilder beanToCsv = new StatefulBeanToCsvBuilder(writer)
+	        		.withQuotechar(CSVWriter.NO_QUOTE_CHARACTER);
 	        try {
 				beanToCsv.build().write(beans);
 				writer.close();

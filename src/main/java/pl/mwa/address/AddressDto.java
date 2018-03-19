@@ -29,6 +29,8 @@ public class AddressDto {
 	
 	private String city;
 
+	private String country;
+	
 	private Client client;
 	
 	

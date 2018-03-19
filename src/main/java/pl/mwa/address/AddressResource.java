@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.mwa.client.Client;
+import pl.mwa.util.CSVUtils;
 
 
 
@@ -47,9 +48,10 @@ public class AddressResource {
 			@RequestParam(name="additionalNumber", required=false) String additionalNumber,
 			@RequestParam(name="postalCode", required=false) String postalCode, 
 			@RequestParam(name="city", required=false) String city, 
+			@RequestParam(name="country", required=false) String country, 
 			@RequestParam(name="client", required=false) Client client) {
 		return ResponseEntity.ok(service.getAddressesSearch(street, 
-				streetNumber, additionalNumber, postalCode, city, client));
+				streetNumber, additionalNumber, postalCode, city, country, client));
 	}
 	
 	@PostMapping
@@ -71,6 +73,17 @@ public class AddressResource {
 		service.deleteAddress(id);
 		log.info("Address with id: "+id+" deleted");
 		return ResponseEntity.accepted().build();
+	}
+	
+	@GetMapping("/export")
+	ResponseEntity exportTableToDB(@RequestParam(name = "filename", required = true) String filename) {
+		service.exportDataToCSV(filename);
+		return ResponseEntity.accepted().build();
+	}
+	
+	@GetMapping("/import")
+	ResponseEntity getImportListFromCSV(@RequestParam(name = "filename", required = true) String filename) {
+		return ResponseEntity.ok(CSVUtils.buildListFromCSV(filename, Address.class));
 	}
 	
 	
