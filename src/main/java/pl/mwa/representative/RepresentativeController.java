@@ -23,11 +23,6 @@ public class RepresentativeController {
 	@Autowired
 	RepresentativeService rs;
 	
-	@Autowired
-	RepresentativeRepository rr;
-	
-	
-	
 	@GetMapping("/add")
 	public String add(Model model) {
 		model.addAttribute("representative", new Representative());
@@ -96,7 +91,7 @@ public class RepresentativeController {
 
 	@PostMapping("/import")
 	public String getImportFileName(@RequestParam(name = "filename", required = true) String filename) {
-		new RepresentativeServiceImpl(rr).importDataFromCSV(filename);
+		rs.importDataFromCSV(filename);
 		return REDIRECT_LISTALL_FULLPATH;
 	}
 	
@@ -108,7 +103,7 @@ public class RepresentativeController {
 	
 	@PostMapping("/export")
 	public String getExportFileName(@RequestParam(name = "filename", required = true) String filename) {
-		new RepresentativeServiceImpl(rr).exportDataToCSV(filename);
+		rs.exportDataToCSV(filename);
 		return REDIRECT_LISTALL_FULLPATH;
 	}
 	

@@ -41,8 +41,14 @@ public class TeamService {
 		repository.delete(id);
 	}
 	
+	List<Team> getTeams(String name) {
+		return repository.findAllByNameIgnoreCaseContaining(name);
+	}
 	
-	
+	Team getTeamByLeaderId(Long id) {
+		return repository.findByLeaderId(id)
+						 .orElseThrow(() -> new ModelNotFound("Leader", id));
+	}
 	
 	
 	

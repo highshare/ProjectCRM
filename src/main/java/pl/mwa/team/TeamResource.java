@@ -34,6 +34,18 @@ public class TeamResource {
 		return ResponseEntity.ok(service.getTeams());
 	}
 	
+	
+	@GetMapping("/name/{name}")
+	ResponseEntity getTeams(@PathVariable("name") String name) {
+		return ResponseEntity.ok(service.getTeams(name));
+	}
+	
+	@GetMapping("/leader/{id}")
+	ResponseEntity getTeamByLeader(@PathVariable("id") Long id) {
+		return ResponseEntity.ok(service.getTeamByLeaderId(id));
+	}
+	
+	
 	@PostMapping
 	ResponseEntity createTeam(@RequestBody @Valid Team team) {
 		Long id = service.createTeam(team);

@@ -21,20 +21,12 @@ import pl.mwa.util.CSVUtils;
 @RestController
 public class ClientResource {
 	
-/*	@Autowired
-	ClientServiceImpl cs;*/
-	
-/*	@Autowired
-	ClientRepository cr;*/
-	
+
 	
 	@Autowired
 	ClientService service;
 
-/*	public ClientResource(ClientServiceImpl cs) {
-		this.cs = cs;
-	}*/
-	
+
 	
 	 @GetMapping("/{id}")
 	 ResponseEntity getClient(@PathVariable Long id){
